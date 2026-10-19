@@ -1,0 +1,1449 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>モリコロ忘れもの受付帳</title>
+<meta name="description" content="モリコロパーク（愛・地球博記念公園）のベンチに置かれた忘れもの17点を探して、写真で受付していくスタンプ帳。非公式・無料。写真は端末の中だけに保存されます。">
+<meta property="og:type" content="website">
+<meta property="og:title" content="モリコロ忘れもの受付帳">
+<meta property="og:description" content="モリコロパーク（愛・地球博記念公園）のベンチに置かれた忘れもの17点を探して、写真で受付していくスタンプ帳。非公式・無料。写真は端末の中だけに保存されます。">
+<meta property="og:url" content="https://dchemk-sudo.github.io/morikoro/">
+<meta property="og:image" content="https://dchemk-sudo.github.io/morikoro/ogp.png">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ECF0E8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A//www.w3.org/2000/svg%27%20viewBox%3D%270%200%2064%2064%27%3E%3Ccircle%20cx%3D%2732%27%20cy%3D%2732%27%20r%3D%2727%27%20fill%3D%27%23F9FBF7%27%20stroke%3D%27%23C4302A%27%20stroke-width%3D%275%27/%3E%3Ctext%20x%3D%2732%27%20y%3D%2742%27%20font-size%3D%2727%27%20font-weight%3D%27700%27%20text-anchor%3D%27middle%27%20fill%3D%27%23C4302A%27%20font-family%3D%27sans-serif%27%3E%E5%8F%97%3C/text%3E%3C/svg%3E">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: 受付票の束 — one ledger column. Each bench is a claim slip: a numbered stub, a photo field, and a date stamp pressed across the photo's edge. Printed parts use the gothic, what visitors fill in uses the pen hand, and the stamp is the only red. */
+:root{
+  --paper:#ECF0E8;      /* 伝票の地色 */
+  --slip:#F9FBF7;       /* 票面 */
+  --line:#BFCFC5;       /* 細い罫 */
+  --rule:#2E6251;       /* 印刷の罫・見出しの緑 */
+  --ink:#1B2420;        /* 印刷の文字 */
+  --ink-2:#55635C;      /* 補助の文字 */
+  --pen:#22397C;        /* ボールペンの青黒 */
+  --shu:#C4302A;        /* 朱肉 */
+  --shu-wash:rgba(196,48,42,.10);
+  --print:#FFFFFF;      /* 写真の白フチ */
+  --seal-a:#E1E8E0; --seal-b:#D2DCD4;
+  --tag-bg:rgba(18,24,21,.74); --tag-fg:#F4F7F3;
+  --shadow:0 1px 0 rgba(27,36,32,.05), 0 8px 20px -12px rgba(27,36,32,.38);
+  --stamp-blend:multiply;
+  --f-print:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
+  --f-hand:"Klee One","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
+  --f-num:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#111714; --slip:#18201C; --line:#2F3E37; --rule:#7DB9A4; --ink:#E3EBE6; --ink-2:#A0B1A9;
+    --pen:#B1C4FF; --shu:#FF6E5B; --shu-wash:rgba(255,110,91,.14); --print:#DCE3DE;
+    --seal-a:#25302B; --seal-b:#1D2622; --shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 24px -14px rgba(0,0,0,.85);
+    --stamp-blend:normal; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#111714; --slip:#18201C; --line:#2F3E37; --rule:#7DB9A4; --ink:#E3EBE6; --ink-2:#A0B1A9;
+  --pen:#B1C4FF; --shu:#FF6E5B; --shu-wash:rgba(255,110,91,.14); --print:#DCE3DE;
+  --seal-a:#25302B; --seal-b:#1D2622; --shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 24px -14px rgba(0,0,0,.85);
+  --stamp-blend:normal; color-scheme:dark;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+body{ background:var(--paper); color:var(--ink); font-family:var(--f-print); font-size:15px; line-height:1.65; -webkit-text-size-adjust:100%; }
+.page{ max-width:680px; margin-inline:auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:20px 56px; }
+h1,h2,h3,p,dl,dd,ol,ul{ margin:0; }
+button{ font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
+:focus-visible{ outline:3px solid var(--rule); outline-offset:2px; border-radius:3px; }
+.num{ font-family:var(--f-num); font-variant-numeric:tabular-nums; }
+.hand{ font-family:var(--f-hand); color:var(--pen); font-weight:600; }
+.vh{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* ── masthead ── */
+.eyebrow{ display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; font-size:11.5px; letter-spacing:.08em; color:var(--ink-2); }
+.conn{ display:inline-flex; align-items:center; gap:6px; }
+.conn::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--line); }
+.conn[data-mode="idb"]::before{ background:var(--rule); }
+.conn[data-mode="memory"]::before,.conn[data-mode="demo"]::before{ background:var(--shu); }
+.title{ font-size:clamp(32px, 9.4vw, 44px); font-weight:900; letter-spacing:.05em; line-height:1.15; margin-top:10px; text-wrap:balance; }
+.where{ display:flex; align-items:baseline; gap:10px; margin-top:10px; padding-bottom:4px; border-bottom:1px solid var(--line); }
+.where .lbl{ font-size:11px; letter-spacing:.1em; color:var(--ink-2); flex:none; }
+.where .hand{ font-size:17px; min-width:0; }
+.lead{ font-size:14px; color:var(--ink-2); margin-top:10px; max-width:36em; }
+
+.status{ position:relative; margin-top:22px; border:1.5px solid var(--rule); border-radius:4px; background:var(--slip); padding:16px 14px 12px; }
+.status-tab{ position:absolute; top:-10px; left:12px; padding:0 6px; background:var(--paper); color:var(--rule); font-size:11px; font-weight:700; letter-spacing:.14em; }
+.count{ display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
+.count .big{ font-size:46px; font-weight:600; line-height:1; color:var(--ink); }
+.count .of{ font-size:20px; font-weight:500; color:var(--ink-2); }
+.count .unit{ font-size:13px; color:var(--ink-2); margin-left:2px; }
+.strip{ display:grid; grid-template-columns:repeat(17, minmax(0,1fr)); gap:2px; list-style:none; padding:0; margin-top:12px; }
+.cell{ position:relative; display:grid; place-items:center; width:100%; aspect-ratio:1; padding:0; border:1px solid var(--line); border-radius:2px; background:var(--paper); color:var(--ink-2); font-family:var(--f-num); font-size:8px; line-height:1; }
+.cell.on{ color:transparent; background:var(--slip); }
+.cell.on::after{ content:""; position:absolute; inset:12%; border-radius:50%; border:2px solid var(--shu); background:var(--shu-wash); }
+.status-meta{ display:flex; flex-wrap:wrap; gap:4px 20px; margin-top:10px; font-size:12px; color:var(--ink-2); }
+.status-meta div{ display:flex; align-items:baseline; gap:8px; }
+.status-meta dd{ font-size:16px; }
+.status-act{ margin-top:12px; }
+
+.people{ display:grid; gap:10px; margin-top:16px; padding:12px 14px 14px; border:1px solid var(--line); border-radius:4px; background:var(--slip); }
+.people-head{ display:flex; align-items:center; justify-content:space-between; gap:8px 12px; flex-wrap:wrap; }
+.people-title{ font-size:12px; font-weight:700; letter-spacing:.14em; color:var(--rule); }
+.stepper{ display:inline-flex; align-items:stretch; border:1.5px solid var(--rule); border-radius:999px; overflow:hidden; }
+.step{ width:44px; min-height:38px; border:0; background:transparent; color:var(--rule); font-size:20px; font-weight:700; line-height:1; }
+.step:disabled{ opacity:.35; cursor:default; }
+.stepper output{ display:grid; place-items:center; min-width:3.4em; padding-inline:4px; border-inline:1.5px solid var(--rule); color:var(--ink); font-size:15px; font-weight:700; }
+.names{ display:grid; grid-template-columns:repeat(auto-fill, minmax(8.5em, 1fr)); gap:8px; }
+.names input{ width:100%; min-height:42px; padding:6px 10px; border:1.5px solid var(--line); border-radius:4px; background:var(--paper); color:var(--pen); font-family:var(--f-hand); font-weight:600; font-size:16px; }
+.names input:focus{ border-color:var(--rule); outline:none; }
+.names input:disabled{ opacity:.6; }
+.ctl{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.ctl-label{ font-size:12px; color:var(--ink-2); min-width:5.2em; }
+.chips{ display:flex; flex-wrap:wrap; gap:6px; min-width:0; }
+.chip{ min-height:38px; max-width:11em; padding:4px 14px; border:1.5px solid var(--rule); border-radius:999px; background:transparent; color:var(--rule); font-family:var(--f-hand); font-weight:600; font-size:15px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.chip[aria-checked="true"]{ background:var(--rule); color:var(--slip); }
+.people-help{ font-size:12px; color:var(--ink-2); }
+
+.controls{ display:grid; gap:10px; margin-top:16px; }
+.seg{ display:inline-flex; border:1.5px solid var(--rule); border-radius:999px; overflow:hidden; max-width:100%; }
+.seg button{ min-height:36px; padding:6px 14px; border:0; background:transparent; color:var(--rule); font-size:13px; font-weight:700; }
+.seg button + button{ border-left:1.5px solid var(--rule); }
+.seg button[aria-checked="true"]{ background:var(--rule); color:var(--slip); }
+
+.banner{ margin-top:16px; padding:10px 12px; border:1.5px dashed var(--rule); border-radius:4px; background:var(--slip); font-size:13px; display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; }
+.banner[data-kind="warn"],.banner[data-kind="demo"]{ border-color:var(--shu); }
+
+/* ── areas & slips ── */
+.areas{ display:grid; gap:30px; margin-top:30px; }
+.area-head{ display:flex; align-items:center; gap:10px; padding-bottom:6px; border-bottom:1.5px solid var(--rule); }
+.area-key{ flex:none; display:grid; place-items:center; width:26px; height:26px; border:1.5px solid var(--rule); border-radius:3px; color:var(--rule); font-family:var(--f-num); font-weight:600; font-size:14px; line-height:1; }
+.area.is-done .area-key{ background:var(--rule); color:var(--slip); }
+.area-head h2{ flex:1; min-width:0; font-size:16px; font-weight:700; line-height:1.4; text-wrap:balance; }
+.area-count{ flex:none; font-size:13px; color:var(--ink-2); }
+.area-note{ font-size:12.5px; color:var(--ink-2); margin:6px 0 14px; }
+.slips{ display:grid; gap:18px; }
+
+.slip{ position:relative; display:grid; grid-template-columns:46px minmax(0,1fr); background:var(--slip); border:1px solid var(--line); border-radius:6px; box-shadow:var(--shadow); scroll-margin-top:16px; }
+.slip::before,.slip::after{ content:""; position:absolute; left:46px; width:14px; height:14px; margin-left:-7px; border-radius:50%; background:var(--paper); }
+.slip::before{ top:-7px; } .slip::after{ bottom:-7px; }
+.stub{ display:flex; flex-direction:column; align-items:center; gap:3px; padding:14px 0; border-right:2px dashed var(--line); }
+.stub-no{ font-family:var(--f-num); font-size:10px; letter-spacing:.06em; color:var(--ink-2); line-height:1; }
+.stub-num{ font-family:var(--f-num); font-size:19px; font-weight:600; line-height:1; color:var(--ink); }
+.slip.is-filled .stub-num{ color:var(--shu); }
+.slip-body{ display:grid; grid-template-columns:minmax(0,1fr) 92px; grid-template-areas:"titles photo" "hint photo"; grid-template-rows:auto 1fr; gap:8px 12px; padding:12px 14px 14px; min-width:0; }
+.slip.is-filled .slip-body{ grid-template-columns:minmax(0,1fr); grid-template-areas:"titles" "photo" "fields" "hint"; grid-template-rows:auto; }
+.titles{ grid-area:titles; min-width:0; }
+.film{ font-size:11.5px; letter-spacing:.04em; color:var(--ink-2); line-height:1.5; }
+.badge{ display:inline-block; margin-left:6px; padding:0 5px; border:1px solid var(--shu); border-radius:2px; color:var(--shu); font-size:10px; font-weight:700; letter-spacing:.04em; line-height:1.55; vertical-align:1px; white-space:nowrap; }
+.item{ font-size:17px; font-weight:700; line-height:1.4; margin-top:2px; text-wrap:balance; }
+
+.photo{ grid-area:photo; position:relative; min-width:0; }
+.add,.none{ display:grid; place-items:center; align-content:center; gap:2px; width:92px; max-width:100%; aspect-ratio:1; border:1.5px dashed var(--rule); border-radius:4px; background:var(--paper); padding:6px; text-align:center; }
+.add{ color:var(--rule); }
+.add:active{ transform:translateY(1px); }
+.add-label{ font-size:9.5px; letter-spacing:.06em; color:var(--ink-2); line-height:1.2; }
+.add-plus{ font-size:30px; font-weight:400; line-height:1; }
+.add-text{ font-size:11px; font-weight:700; line-height:1.2; }
+.none{ border-color:var(--line); color:var(--ink-2); font-size:11px; }
+.print{ display:block; width:100%; padding:6px; border:0; border-radius:2px; background:var(--print); box-shadow:var(--shadow); transform:rotate(-.6deg); cursor:zoom-in; }
+.print img{ display:block; width:100%; max-width:100%; aspect-ratio:4/3; object-fit:cover; background:var(--line); }
+.print.is-broken img{ visibility:hidden; }
+.print.is-broken::after{ content:"写真を読み込めません"; position:absolute; inset:6px; display:grid; place-items:center; font-size:12px; color:var(--ink-2); }
+.busy{ position:absolute; inset:0; display:grid; place-items:center; border-radius:4px; background:var(--slip); background:color-mix(in srgb, var(--slip) 84%, transparent); color:var(--rule); font-size:12px; font-weight:700; }
+
+.dstamp{ --s:84px; --rot:-9deg; position:absolute; right:4px; bottom:-24px; width:var(--s); height:var(--s); display:grid; grid-template-rows:1fr auto 1fr; overflow:hidden; border:2.5px solid var(--shu); border-radius:50%; color:var(--shu); transform:rotate(var(--rot)); mix-blend-mode:var(--stamp-blend); opacity:.92; pointer-events:none; }
+.dstamp > span{ display:flex; justify-content:center; font-weight:900; font-size:11px; letter-spacing:.08em; line-height:1; white-space:nowrap; }
+.dstamp .ds-top{ align-items:flex-end; padding-bottom:3px; }
+.dstamp .ds-bot{ align-items:flex-start; padding-top:3px; font-family:var(--f-hand); letter-spacing:.02em; font-size:11.5px; }
+.dstamp .ds-mid{ align-items:center; padding:3px 0; border-block:2px solid var(--shu); font-family:var(--f-num); font-weight:600; font-size:12px; letter-spacing:.02em; }
+
+.fields{ grid-area:fields; display:none; grid-template-columns:auto minmax(0,1fr); gap:3px 10px; padding-right:86px; min-height:56px; margin-top:4px; }
+.slip.is-filled .fields{ display:grid; }
+.fields > div{ display:contents; }
+.fields dt{ font-size:11.5px; color:var(--ink-2); padding-top:4px; }
+.fields dd{ font-family:var(--f-hand); color:var(--pen); font-weight:600; font-size:15px; border-bottom:1px dotted var(--line); min-width:0; overflow-wrap:anywhere; }
+.fields .is-empty dd{ color:var(--ink-2); font-weight:400; }
+
+.hint{ grid-area:hint; display:flex; flex-wrap:wrap; align-items:center; gap:6px 8px; font-size:13px; min-width:0; align-self:start; }
+.hint-label{ flex:none; font-size:10.5px; letter-spacing:.08em; color:var(--ink-2); border:1px solid var(--line); border-radius:2px; padding:1px 5px; line-height:1.5; }
+.seal{ min-height:30px; padding:3px 14px; border:1px solid var(--line); border-radius:3px; background:repeating-linear-gradient(135deg, var(--seal-a) 0 6px, var(--seal-b) 6px 12px); color:var(--ink-2); font-size:12px; font-weight:700; letter-spacing:.14em; }
+.hint-text{ min-width:0; color:var(--ink); line-height:1.55; }
+.more{ border:0; background:none; padding:4px 2px; color:var(--rule); font-size:12px; text-decoration:underline; text-underline-offset:3px; }
+.nohint{ font-size:11px; font-weight:700; color:var(--rule); border:1.5px solid var(--rule); border-radius:999px; padding:0 8px; line-height:1.7; }
+.slip.is-filled .hint{ margin-top:2px; }
+
+.slip.stamp-in .dstamp{ animation:thunk .55s cubic-bezier(.2,.9,.3,1.25) both; }
+.slip.stamp-in .print{ animation:drop .45s ease-out both; }
+.peel{ animation:peel .35s ease-out both; }
+@keyframes thunk{ 0%{ transform:rotate(var(--rot)) scale(1.9); opacity:0; } 55%{ transform:rotate(var(--rot)) scale(.94); opacity:1; } 100%{ transform:rotate(var(--rot)) scale(1); opacity:.92; } }
+@keyframes drop{ from{ transform:translateY(-10px) rotate(-2.2deg); opacity:0; } to{ transform:rotate(-.6deg); opacity:1; } }
+@keyframes peel{ from{ opacity:0; transform:translateX(-6px); } to{ opacity:1; transform:none; } }
+
+/* ── certificate ── */
+.cert{ margin-top:28px; }
+.cert-frame{ position:relative; overflow:hidden; background:var(--slip); border:4px double var(--rule); border-radius:2px; padding:22px 18px 20px; box-shadow:var(--shadow); }
+.cert-kicker{ font-size:11.5px; letter-spacing:.14em; color:var(--ink-2); }
+.cert-title{ font-size:28px; font-weight:900; letter-spacing:.18em; margin-top:6px; }
+.cert-lead{ font-size:14px; margin-top:10px; padding-right:120px; max-width:32em; }
+.cert-fields{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:4px 14px; margin-top:16px; font-size:12px; }
+.cert-fields > div{ display:contents; }
+.cert-fields dt{ color:var(--ink-2); padding-top:3px; }
+.cert-fields dd{ font-size:16px; border-bottom:1px dotted var(--line); min-width:0; overflow-wrap:anywhere; }
+.cert-grid{ display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:5px; list-style:none; padding:0; margin-top:18px; }
+.cert-grid li{ position:relative; aspect-ratio:1; overflow:hidden; border-radius:2px; background:var(--line); }
+.cert-grid img{ display:block; width:100%; height:100%; object-fit:cover; }
+.cert-grid span{ position:absolute; left:2px; top:2px; padding:2px 3px; border-radius:2px; background:var(--tag-bg); color:var(--tag-fg); font-family:var(--f-num); font-size:9px; font-weight:600; line-height:1; }
+.cert .dstamp.big{ --s:116px; --rot:-11deg; top:56px; right:10px; bottom:auto; }
+.cert .dstamp.big > span{ font-size:15px; }
+.cert .dstamp.big .ds-mid{ font-size:16px; padding:5px 0; }
+.cert .dstamp.big .ds-bot{ font-size:15px; }
+.cert.celebrate .dstamp.big{ animation:thunk .7s cubic-bezier(.2,.9,.3,1.25) both; }
+.cert-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:10px 14px; margin-top:18px; }
+.help{ font-size:12px; color:var(--ink-2); flex:1 1 14em; min-width:0; }
+.btn{ min-height:44px; padding:10px 16px; border:1.5px solid var(--rule); border-radius:4px; background:var(--slip); color:var(--rule); font-size:14px; font-weight:700; }
+.btn.primary{ background:var(--rule); color:var(--slip); }
+.btn.danger{ border-color:var(--shu); color:var(--shu); }
+.btn.danger.armed{ background:var(--shu); color:var(--slip); }
+.btn:disabled{ opacity:.55; cursor:default; }
+
+/* ── footer ── */
+.foot{ margin-top:44px; padding-top:14px; border-top:1.5px solid var(--rule); font-size:13.5px; }
+.foot summary{ cursor:pointer; font-weight:700; padding:6px 0; }
+.foot h3{ font-size:13px; font-weight:700; margin-top:14px; color:var(--rule); }
+.foot ul{ display:grid; gap:6px; padding-left:1.2em; margin-top:6px; }
+.foot a{ color:var(--rule); text-underline-offset:3px; overflow-wrap:anywhere; }
+.reset{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-top:16px; }
+.fine{ font-size:11.5px; color:var(--ink-2); margin-top:18px; }
+
+/* ── sheets (dialog) ── */
+dialog.sheet{ width:100%; max-width:560px; max-height:92vh; margin:auto auto 0; padding:0; border:0; border-radius:14px 14px 0 0; background:var(--slip); color:var(--ink); overflow:auto; box-shadow:0 -12px 40px rgba(0,0,0,.28); }
+@media (min-width:640px){ dialog.sheet{ margin:auto; border-radius:12px; } }
+dialog.sheet::backdrop{ background:rgba(10,14,12,.58); }
+.sheet-in{ display:grid; gap:12px; padding:16px max(16px, env(safe-area-inset-right, 0px)) calc(18px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.sheet-head{ display:flex; align-items:flex-start; gap:10px; }
+.sheet-head > div{ flex:1; min-width:0; }
+.sheet-head h2{ font-size:17px; font-weight:700; line-height:1.4; text-wrap:balance; }
+.x{ flex:none; width:40px; height:40px; border:1px solid var(--line); border-radius:50%; background:var(--paper); font-size:18px; line-height:1; }
+.sheet-photo,.pv-img{ display:block; width:100%; max-height:58vh; object-fit:contain; background:var(--paper); border-radius:4px; }
+.sheet-meta{ display:flex; flex-wrap:wrap; gap:4px 18px; font-size:12px; color:var(--ink-2); }
+.sheet-meta div{ display:flex; align-items:baseline; gap:6px; }
+.sheet-meta dd{ font-size:16px; }
+.field{ display:grid; gap:4px; }
+.field label{ font-size:12px; color:var(--ink-2); }
+.field input{ width:100%; min-height:44px; padding:8px 10px; border:1.5px solid var(--line); border-radius:4px; background:var(--paper); color:var(--pen); font-family:var(--f-hand); font-weight:600; font-size:17px; }
+.field input:focus{ border-color:var(--rule); outline:none; }
+.row{ display:flex; flex-wrap:wrap; gap:8px; }
+.row .btn{ flex:1 1 9em; }
+
+/* ── toast ── */
+.toast{ position:fixed; left:0; right:0; bottom:0; z-index:30; display:flex; justify-content:center; padding:0 max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); pointer-events:none; }
+.toast-in{ pointer-events:auto; display:flex; align-items:center; gap:12px; width:100%; max-width:520px; padding:10px 10px 10px 14px; border-radius:8px; background:var(--ink); color:var(--paper); box-shadow:var(--shadow); font-size:14px; }
+.toast-in p{ flex:1; min-width:0; }
+.toast-in button{ flex:none; min-height:38px; padding:6px 12px; border:1.5px solid currentColor; border-radius:4px; background:transparent; color:var(--paper); font-weight:700; font-size:13px; }
+
+@media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none !important; transition:none !important; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="eyebrow"><span>非公式・ご自由にどうぞ</span><span class="conn" id="wm-conn" data-mode="loading">読み込み中…</span></div>
+    <h1 class="title">忘れもの受付帳</h1>
+    <p class="where"><span class="lbl">場所</span><span class="hand">モリコロパーク（愛・地球博記念公園）</span></p>
+    <p class="lead">園内のベンチに置き忘れられた十七点を探して、見つけたら写真を貼って受付する台帳です。写真と記録はこの端末の中だけに保存され、どこにも送られません。</p>
+
+    <section class="status" aria-label="受付状況">
+      <span class="status-tab">受付状況</span>
+      <div class="count"><span class="big num" id="wm-count">00</span><span class="of num">/ 17</span><span class="unit">点 受付済み</span></div>
+      <ol class="strip" id="wm-strip"></ol>
+      <dl class="status-meta">
+        <div><dt>最初の受付</dt><dd class="hand" id="wm-first">—</dd></div>
+        <div><dt id="wm-elapsed-label">経過</dt><dd class="hand" id="wm-elapsed">—</dd></div>
+      </dl>
+      <button type="button" class="btn status-act" data-act="collage" id="wm-partial" hidden>いまの記録を画像にする</button>
+    </section>
+
+    <section class="people" id="wm-people" aria-labelledby="wm-people-title">
+      <div class="people-head">
+        <h2 class="people-title" id="wm-people-title">受付係</h2>
+        <div class="stepper" role="group" aria-label="人数">
+          <button type="button" class="step" id="wm-minus" data-act="minus" aria-label="人数を減らす">−</button>
+          <output id="wm-people-n" aria-live="polite">1人</output>
+          <button type="button" class="step" id="wm-plus" data-act="plus" aria-label="人数を増やす">＋</button>
+        </div>
+      </div>
+      <div class="names" id="wm-names"></div>
+      <div class="ctl" id="wm-current-ctl" hidden>
+        <span class="ctl-label">いまの受付係</span>
+        <div class="chips" role="radiogroup" aria-label="いまの受付係" id="wm-chips"></div>
+      </div>
+      <p class="people-help" id="wm-people-help"></p>
+    </section>
+
+    <div class="controls">
+      <div class="ctl">
+        <span class="ctl-label">順路</span>
+        <div class="seg" role="radiogroup" aria-label="順路">
+          <button type="button" role="radio" aria-checked="true" data-act="route" data-v="north">北口から</button>
+          <button type="button" role="radio" aria-checked="false" data-act="route" data-v="west">西口から</button>
+        </div>
+      </div>
+    </div>
+    <div class="banner" id="wm-banner" hidden></div>
+  </header>
+
+  <section class="cert" id="wm-cert" hidden aria-labelledby="wm-cert-title">
+    <div class="cert-frame">
+      <p class="cert-kicker">モリコロパーク　忘れもの係</p>
+      <h2 class="cert-title" id="wm-cert-title">受付完了証</h2>
+      <p class="cert-lead">ベンチに置き忘れられていた品、十七点。すべて写真に収め、受付を完了しました。</p>
+      <dl class="cert-fields">
+        <div><dt>受付日</dt><dd class="hand" id="wm-c-date">—</dd></div>
+        <div><dt>受付時間</dt><dd class="hand" id="wm-c-time">—</dd></div>
+        <div><dt>受付係</dt><dd class="hand" id="wm-c-clerks">—</dd></div>
+        <div><dt>ノーヒント</dt><dd class="hand" id="wm-c-nohint">—</dd></div>
+      </dl>
+      <ol class="cert-grid" id="wm-c-grid"></ol>
+      <div class="dstamp big" aria-hidden="true"><span class="ds-top">受付完了</span><span class="ds-mid" id="wm-c-seal">--.--.--</span><span class="ds-bot" id="wm-c-people">ひとり</span></div>
+      <div class="cert-actions">
+        <button type="button" class="btn primary" data-act="collage" id="wm-collage">記念の一枚を作る</button>
+        <p class="help" id="wm-collage-help">17枚の写真と記録を、縦長の画像1枚にまとめます。</p>
+      </div>
+    </div>
+  </section>
+
+  <main class="areas" id="wm-areas"></main>
+
+  <footer class="foot">
+    <details>
+      <summary>使い方と注意</summary>
+      <h3>写真の貼り方</h3>
+      <ul>
+        <li>受付票の「＋」から写真を選びます。カメラアプリで撮ってから写真ライブラリで選ぶと、元の写真がそのまま端末に残ります。</li>
+        <li>「＋」から直接撮った写真は、写真アプリには残りません。受付のあとに出る「端末にも保存」を押してください。</li>
+        <li>貼った写真は長い辺を1600pxに縮め、位置情報を消してから、この端末の中に保存します。</li>
+        <li>撮り直し、備考の記入、受付の取り消しは、貼った写真をタップして行います。</li>
+      </ul>
+      <h3>何人かで使うとき</h3>
+      <ul>
+        <li>人数を2人以上にすると、1台のスマホで交代しながら受付できます。写真を貼る前に「いまの受付係」を選んでください。</li>
+        <li>スマホどうしで記録を共有する機能はありません。</li>
+      </ul>
+      <h3>記録の保存について</h3>
+      <ul>
+        <li>記録と写真は、このブラウザの中にだけ保存されます。サーバーには送られません。</li>
+        <li>プライベートブラウズ、サイトデータの削除、ブラウザの設定によっては消えることがあります。途中でも「いまの記録を画像にする」で保存しておくと安心です。</li>
+      </ul>
+      <h3>当日のメモ</h3>
+      <ul>
+        <li>開園は8:00〜19:00（11〜3月は18:30まで、休館日は17:30まで）。休館日は火曜（祝日のときは翌平日）と年末年始です。</li>
+        <li>忘れものは全部、ジブリパークのチケットがなくても見られる場所にあります。</li>
+        <li>全部回ると3km以上歩きます。2〜3時間を目安にしてください。番号は北口から回る順の目安です。</li>
+        <li>場所のヒントは、2023〜2026年にファンの方が書いた訪問記をもとにした目安です。現地と違うことがあります。</li>
+      </ul>
+      <h3>参考にした記事</h3>
+      <ul>
+        <li><a href="https://note.com/nyaaaa_repo/n/n7d5ec3a2b422" target="_blank" rel="noopener">モリコロパークで『ジブリの忘れ物』を探そう（nyaaaa）</a></li>
+        <li><a href="https://dondoko.mahoukai.com/ghibli-park/moricoro-park/ghibli-park-lost-items-011120220201.html" target="_blank" rel="noopener">ベンチに置かれた「ジブリの忘れ物」17種類と設置場所（どんどこ魔法界ドットコム）</a></li>
+        <li><a href="https://gptrip.jp/ghiblipark-lostitems/" target="_blank" rel="noopener">ジブリパーク忘れ物オブジェ17個の場所（gptrip）</a></li>
+        <li><a href="https://www.aichi-koen.com/moricoro/" target="_blank" rel="noopener">愛・地球博記念公園（モリコロパーク）公式サイト</a></li>
+      </ul>
+      <p style="margin-top:12px"><a href="#mihon">全部そろったときの見本を見る</a></p>
+    </details>
+    <div class="reset" id="wm-reset-row" hidden>
+      <button type="button" class="btn danger" data-act="reset" id="wm-reset">記録と写真をすべて消す</button>
+      <span class="help">人数と名前は残ります。</span>
+    </div>
+    <p class="fine">非公式のファンメイドの台帳です。スタジオジブリ、ジブリパーク、公園の運営とは関係ありません。作品名と品名は、ベンチを探す目印として書いています。ご自由にお使いください。</p>
+  </footer>
+</div>
+
+<input type="file" id="wm-file" accept="image/*" class="vh" tabindex="-1" aria-hidden="true">
+
+<dialog class="sheet" id="wm-sheet" aria-labelledby="wm-sheet-title">
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <div><p class="film" id="wm-s-film"></p><h2 id="wm-sheet-title"></h2></div>
+      <button type="button" class="x" data-act="close-sheet" aria-label="閉じる">×</button>
+    </div>
+    <img class="sheet-photo" id="wm-s-img" alt="">
+    <dl class="sheet-meta">
+      <div><dt>受付</dt><dd class="hand" id="wm-s-at">—</dd></div>
+      <div><dt>係</dt><dd class="hand" id="wm-s-by">—</dd></div>
+    </dl>
+    <div class="field" id="wm-s-memo-field">
+      <label for="wm-memo">備考（ひとこと）</label>
+      <input id="wm-memo" type="text" maxlength="60" autocomplete="off" placeholder="例：思ったより小さかった">
+    </div>
+    <p class="hand" id="wm-s-memo-ro" hidden></p>
+    <div class="row" id="wm-s-edit">
+      <button type="button" class="btn primary" data-act="memo-save">備考を保存</button>
+      <button type="button" class="btn" data-act="retake">撮り直す</button>
+    </div>
+    <div class="row" id="wm-s-actions">
+      <button type="button" class="btn" data-act="save-photo" id="wm-s-save">端末に保存</button>
+      <button type="button" class="btn danger" data-act="undo" id="wm-s-undo">受付を取り消す</button>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet" id="wm-pv" aria-labelledby="wm-pv-title">
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <div><h2 id="wm-pv-title">記念の一枚</h2></div>
+      <button type="button" class="x" data-act="close-pv" aria-label="閉じる">×</button>
+    </div>
+    <img class="pv-img" id="wm-pv-img" alt="受付した写真と記録をまとめた画像">
+    <p class="help" id="wm-pv-help">保存ボタンが使えないときは、画像を長押しして保存できます。</p>
+    <div class="row">
+      <button type="button" class="btn primary" data-act="pv-save" id="wm-pv-save">画像を保存</button>
+      <button type="button" class="btn" data-act="close-pv">閉じる</button>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="wm-toast" hidden><div class="toast-in" role="status" aria-live="polite"><p id="wm-toast-msg"></p><button type="button" id="wm-toast-btn" data-act="toast-action" hidden></button></div></div>
+
+<noscript><p class="page">このページはJavaScriptが必要です。</p></noscript>
+
+<script>
+(() => {
+  'use strict';
+
+  /* ── catalog ── */
+  const MAX_PEOPLE = 6;
+  const PEOPLE_WORD = ['ひとり', 'ふたり', 'さんにん', 'よにん', 'ごにん', 'ろくにん'];
+  const AREAS = [
+    { key: 'A', name: '青春の丘（エレベーター塔・地球屋）', note: '北口を入ってすぐのエリア。エレベーター塔はチケットなしで乗れます。' },
+    { key: 'B', name: '大芝生広場の高台', note: '広場を上から見下ろせる場所を探してみてください。' },
+    { key: 'C', name: '魔女の谷の前（園内バスE3のあたり）', note: '2024年に増えた2点がこのあたりにあります。大芝生広場から近く、赤い屋根のガゼボが目印です。' },
+    { key: 'D', name: '稲楼門（とうろうもん）からどんどこ森への山道', note: '門の先で道が4本に分かれます。1本ずつ確かめるのが近道です。' },
+    { key: 'E', name: '日本庭園・かえで池', note: '池に近い下の道と、庭園を見渡す上の道があります。' },
+    { key: 'F', name: 'こいの池（西口）', note: '西駐車場から近いエリアです。とても小さな品があります。' },
+  ];
+  const ITEMS = [
+    { id: '01', area: 'A', film: '天空の城ラピュタ', name: 'パズーのゴーグル・カバン・ランタン', short: 'パズーのゴーグル', h1: '青春の丘、エレベーター塔のまわり', h2: 'エレベーター塔の1番乗り場から見て左手、道沿いのベンチ' },
+    { id: '02', area: 'A', film: 'ゲド戦記', name: 'アレンの剣', short: 'アレンの剣', h1: '青春の丘、地球屋の正面側', h2: '地球屋を正面から見下ろす階段の近く。塔に乗らずに左の道を下ると早い' },
+    { id: '03', area: 'A', film: 'コクリコ坂から', name: '学生カバンと学生帽', short: '学生カバンと帽子', h1: '青春の丘、地球屋の裏手', h2: '地球屋の裏を通る歩道沿いのベンチ' },
+    { id: '04', area: 'A', film: '耳をすませば', name: '雫の麦わら帽子と本', short: '雫の帽子と本', h1: '青春の丘、地球屋の裏手', h2: '地球屋の裏側にあるベンチ' },
+    { id: '05', area: 'A', film: '紅の豚', name: '賞金の詰まった袋', short: '賞金の袋', h1: '青春の丘、地球屋の裏手', h2: '地球屋の裏の歩道沿い。袋が大きいので見つけやすい' },
+    { id: '06', area: 'B', film: '耳をすませば', name: '猫のムーン', short: '猫のムーン', h1: '大芝生広場のまわり', h2: '大芝生広場を見下ろせる高台のベンチ' },
+    { id: '07', area: 'C', film: '魔女の宅急便', name: 'ウルスラのリュックとポスターケース', short: 'ウルスラのリュック', h1: '魔女の谷の入口の近く（園内バスE3のあたり）', h2: '赤い屋根と白い柱のガゼボの中のベンチ。大芝生広場の側から赤い屋根を目指すと近い', added: true },
+    { id: '08', area: 'C', film: 'アーヤと魔女', name: 'アーヤのラジカセとレコード', short: 'ラジカセとレコード', h1: '魔女の谷の出口の近く（園内バスE3のあたり）', h2: 'ガゼボの近く、もののけの里へ向かう道沿いの茶色いベンチ。道から少し見えにくい', added: true },
+    { id: '09', area: 'D', film: '千と千尋の神隠し', name: '石人', short: '石人', h1: '稲楼門のあたり', h2: '稲楼門の正面。門まで行けばすぐ分かる' },
+    { id: '10', area: 'D', film: '平成狸合戦ぽんぽこ', name: 'たぬきの置物', short: 'たぬきの置物', h1: '稲楼門からどんどこ森へ向かう山道', h2: '4本に分かれる道の、左から2番目' },
+    { id: '11', area: 'D', film: 'となりのトトロ', name: 'どんぐりの包み', short: 'どんぐりの包み', h1: '稲楼門からどんどこ森へ向かう山道', h2: 'いちばん右の急な坂。「至どんどこ森」の石碑の上' },
+    { id: '12', area: 'D', film: 'となりのトトロ', name: 'メイの麦わら帽子とトウモロコシ', short: 'メイの帽子', h1: '稲楼門からどんどこ森へ向かう山道', h2: '日本庭園を見下ろせる場所のベンチ。トウモロコシに書かれた文字も見てみて' },
+    { id: '13', area: 'E', film: 'かぐや姫の物語', name: 'たけのこ', short: 'たけのこ', h1: '日本庭園', h2: 'かえで池に沿った下の道。ベンチを突き抜けて生えている' },
+    { id: '14', area: 'E', film: 'ホーホケキョ となりの山田くん', name: '山田家のお父さん', short: '山田家の父', h1: '日本庭園の西、西口管理事務所の近く', h2: 'かえで池を眺められるベンチで寝そべっている' },
+    { id: '15', area: 'F', film: '千と千尋の神隠し', name: '道案内のランプ', short: '道案内のランプ', h1: 'こいの池の北側', h2: 'アイススケート場と西駐車場の間。こいの池の北側の、下の道' },
+    { id: '16', area: 'F', film: '崖の上のポニョ', name: '宗介のバケツと船', short: 'バケツと船', h1: 'こいの池の南側', h2: 'ジブリの大倉庫と西駐車場の間。こいの池の南側のテーブル' },
+    { id: '17', area: 'F', film: '借りぐらしのアリエッティ', name: '角砂糖と手紙', short: '角砂糖と手紙', h1: 'こいの池の南側の休憩スペース', h2: '休憩スペースのカウンターの上。とても小さいので見落とし注意' },
+  ];
+  const TOTAL = ITEMS.length;
+  const byId = Object.fromEntries(ITEMS.map((i) => [i.id, i]));
+  const ROT = { '01': -9, '02': -4, '03': -12, '04': -7, '05': -2, '06': -10, '07': -5, '08': -11, '09': -6, '10': -13, '11': -3, '12': -8, '13': -11, '14': -5, '15': -9, '16': -1, '17': -7 };
+
+  const F_PRINT = '"Zen Kaku Gothic New","Hiragino Sans","Noto Sans JP",sans-serif';
+  const F_HAND = '"Klee One","Hiragino Mincho ProN","Yu Mincho",serif';
+  const F_NUM = '"IBM Plex Mono",ui-monospace,Menlo,monospace';
+
+  /* ── small helpers ── */
+  const $ = (s, r) => (r || document).querySelector(s);
+  const mk = (tag, cls, text) => { const e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; };
+  const pad2 = (n) => String(n).padStart(2, '0');
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const clip = (s, n) => Array.from(s).slice(0, n).join('');
+  const clipStr = (s, n) => clip(String(s || '').trim(), n);
+  const toDate = (iso) => { const d = new Date(iso); return isNaN(d.getTime()) ? null : d; };
+  const fmtTime = (iso) => { const d = toDate(iso); return d ? `${d.getMonth() + 1}/${d.getDate()} ${pad2(d.getHours())}:${pad2(d.getMinutes())}` : '—'; };
+  const fmtHM = (d) => `${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+  const fmtStamp = (iso) => { const d = toDate(iso); return d ? `${String(d.getFullYear()).slice(2)}.${pad2(d.getMonth() + 1)}.${pad2(d.getDate())}` : '--.--.--'; };
+  const fmtDateJa = (d) => `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+  const sameDay = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+  const fmtDur = (ms) => { if (!(ms >= 0)) return '—'; const m = Math.round(ms / 60000); const h = Math.floor(m / 60); return h ? `${h}時間${m % 60}分` : `${m}分`; };
+  const KANJI = ['〇', '一', '二', '三', '四', '五', '六', '七', '八', '九'];
+  const kan = (n) => (n < 10 ? KANJI[n] : `${n >= 20 ? KANJI[Math.floor(n / 10)] : ''}十${n % 10 ? KANJI[n % 10] : ''}`);
+  const reduceMotion = () => { try { return matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { return false; } };
+  const framed = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+
+  /* ── storage on this device (IndexedDB) ── */
+  const IDB = (() => {
+    let dbp = null;
+    const open = () => {
+      if (!dbp) {
+        dbp = new Promise((res, rej) => {
+          let req;
+          try { req = window.indexedDB.open('wasuremono-uketsuke', 1); } catch (e) { rej(e); return; }
+          req.onupgradeneeded = () => {
+            const d = req.result;
+            if (!d.objectStoreNames.contains('kv')) d.createObjectStore('kv');
+            if (!d.objectStoreNames.contains('photos')) d.createObjectStore('photos');
+          };
+          req.onsuccess = () => res(req.result);
+          req.onerror = () => rej(req.error || new Error('idb'));
+          req.onblocked = () => rej(new Error('blocked'));
+        });
+        dbp.catch(() => { dbp = null; });
+      }
+      return dbp;
+    };
+    const run = async (store, mode, fn) => {
+      const d = await open();
+      return new Promise((res, rej) => {
+        let out;
+        const t = d.transaction(store, mode);
+        const r = fn(t.objectStore(store));
+        if (r) r.onsuccess = () => { out = r.result; };
+        t.oncomplete = () => res(out);
+        t.onerror = () => rej(t.error || new Error('tx'));
+        t.onabort = () => rej(t.error || new Error('abort'));
+      });
+    };
+    return {
+      get: (s, k) => run(s, 'readonly', (o) => o.get(k)),
+      put: (s, k, v) => run(s, 'readwrite', (o) => o.put(v, k)),
+      del: (s, k) => run(s, 'readwrite', (o) => o.delete(k)),
+      clear: (s) => run(s, 'readwrite', (o) => o.clear()),
+    };
+  })();
+
+  const blankNames = () => Array.from({ length: MAX_PEOPLE }, () => '');
+  const DEFAULT = () => ({ v: 1, count: 1, names: blankNames(), current: 0, route: 'north', finds: {}, hints: {} });
+  function normalize(x) {
+    const s = DEFAULT();
+    if (!x || typeof x !== 'object') return s;
+    const c = Number(x.count);
+    s.count = Number.isInteger(c) && c >= 1 && c <= MAX_PEOPLE ? c : 1;
+    if (Array.isArray(x.names)) for (let i = 0; i < MAX_PEOPLE; i++) s.names[i] = typeof x.names[i] === 'string' ? clipStr(x.names[i], 8) : '';
+    const cu = Number(x.current);
+    s.current = Number.isInteger(cu) && cu >= 0 && cu < s.count ? cu : 0;
+    s.route = x.route === 'west' ? 'west' : 'north';
+    if (x.finds && typeof x.finds === 'object') {
+      Object.keys(x.finds).forEach((id) => {
+        const f = x.finds[id];
+        if (!byId[id] || !f || typeof f.at !== 'string' || !toDate(f.at)) return;
+        const by = Number(f.by);
+        s.finds[id] = { at: f.at, photoAt: typeof f.photoAt === 'string' ? f.photoAt : f.at, by: Number.isInteger(by) && by >= 0 && by < MAX_PEOPLE ? by : 0, memo: typeof f.memo === 'string' ? f.memo.slice(0, 60) : '' };
+      });
+    }
+    if (x.hints && typeof x.hints === 'object') {
+      Object.keys(x.hints).forEach((id) => { const h = Number(x.hints[id]); if (byId[id] && (h === 1 || h === 2)) s.hints[id] = h; });
+    }
+    return s;
+  }
+
+  /* ── state ── */
+  let S = DEFAULT();
+  let storage = 'loading';            // loading | idb | memory
+  const urls = {};
+  const blobs = {};
+  const busy = new Set();
+  let demo = null;                     // { st, urls }
+  let DL = null;                       // claude.ai downloads capability, when this page runs there
+  let stampIn = null;
+  let celebrateNext = false;
+
+  const cur = () => (demo ? demo.st : S);
+  const urlOf = (id) => (demo ? demo.urls[id] : urls[id]);
+  const editable = () => !demo && storage !== 'loading';
+  const canSave = () => !!DL || !framed;
+  function personName(st, i) { const n = ((st.names && st.names[i]) || '').trim(); return n || (st.count === 1 ? 'わたし' : `${i + 1}人目`); }
+  function stats(st) {
+    const found = ITEMS.filter((it) => st.finds[it.id]);
+    const times = found.map((it) => toDate(st.finds[it.id].at)).filter(Boolean).sort((a, b) => a - b);
+    return { found, times, first: times[0] || null, last: times[times.length - 1] || null, done: found.length === TOTAL };
+  }
+  function perPerson(st) {
+    const n = Array.from({ length: st.count }, () => 0);
+    ITEMS.forEach((it) => { const f = st.finds[it.id]; if (f) n[Math.min(f.by, st.count - 1)]++; });
+    return n;
+  }
+  function clerkSummary(st) {
+    if (st.count === 1) return personName(st, 0);
+    return perPerson(st).map((c, i) => `${personName(st, i)} ${c}点`).join(' ／ ');
+  }
+  function setPhoto(id, blob) { if (urls[id]) URL.revokeObjectURL(urls[id]); blobs[id] = blob; urls[id] = URL.createObjectURL(blob); }
+  function dropPhoto(id) { if (urls[id]) URL.revokeObjectURL(urls[id]); delete urls[id]; delete blobs[id]; }
+
+  let saveTimer = 0;
+  const snapshot = () => JSON.parse(JSON.stringify(S));
+  function storeFailed() {
+    if (storage !== 'idb') return;
+    storage = 'memory';
+    renderAll();
+    toast('この端末に保存できなくなりました。空き容量を確認してください。ページを閉じるまでは記録が残ります。');
+  }
+  function saveState() {
+    if (storage !== 'idb') return;
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(() => { IDB.put('kv', 'state', snapshot()).catch(storeFailed); }, 300);
+  }
+  async function saveStateNow() {
+    if (storage !== 'idb') return;
+    clearTimeout(saveTimer);
+    await IDB.put('kv', 'state', snapshot());
+  }
+  let persistAsked = false;
+  function requestPersist() {
+    if (persistAsked) return;
+    persistAsked = true;
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {}); } catch (e) { /* optional */ }
+  }
+
+  /* ── build the ledger once ── */
+  const areasEl = $('#wm-areas');
+  const stripEl = $('#wm-strip');
+  const slips = {};
+  const cells = {};
+  const areaEls = {};
+
+  function buildStamp(id) {
+    const s = mk('div', 'dstamp');
+    s.setAttribute('aria-hidden', 'true');
+    s.style.setProperty('--rot', (ROT[id] || -8) + 'deg');
+    const mid = mk('span', 'ds-mid', '');
+    const bot = mk('span', 'ds-bot', '');
+    s.append(mk('span', 'ds-top', '受付'), mid, bot);
+    return { s, mid, bot };
+  }
+
+  function buildSlip(it) {
+    const art = mk('article', 'slip');
+    art.id = 'slip-' + it.id;
+    const stub = mk('div', 'stub');
+    stub.append(mk('span', 'stub-no', 'No.'), mk('span', 'stub-num', it.id));
+    const body = mk('div', 'slip-body');
+
+    const titles = mk('div', 'titles');
+    const film = mk('p', 'film', it.film);
+    if (it.added) film.append(mk('span', 'badge', '2024年追加'));
+    titles.append(film, mk('h3', 'item', it.name));
+
+    const photo = mk('div', 'photo');
+    const add = mk('button', 'add');
+    add.type = 'button'; add.dataset.act = 'add'; add.dataset.id = it.id;
+    add.setAttribute('aria-label', `No.${it.id} ${it.name}の写真を貼る`);
+    const plus = mk('span', 'add-plus', '＋'); plus.setAttribute('aria-hidden', 'true');
+    add.append(mk('span', 'add-label', '写真貼付欄'), plus, mk('span', 'add-text', '撮って貼る'));
+    const none = mk('div', 'none', '未受付');
+    const print = mk('button', 'print');
+    print.type = 'button'; print.dataset.act = 'open'; print.dataset.id = it.id;
+    const img = mk('img');
+    img.decoding = 'async'; img.alt = '';
+    img.addEventListener('error', () => print.classList.add('is-broken'));
+    img.addEventListener('load', () => print.classList.remove('is-broken'));
+    print.append(img);
+    const st = buildStamp(it.id);
+    const bz = mk('div', 'busy', '受付中…');
+    photo.append(add, none, print, st.s, bz);
+
+    const fields = mk('dl', 'fields');
+    const fAt = mk('div'); const vAt = mk('dd'); fAt.append(mk('dt', null, '受付'), vAt);
+    const fBy = mk('div'); const vBy = mk('dd'); fBy.append(mk('dt', null, '係'), vBy);
+    const fMemo = mk('div'); const vMemo = mk('dd'); fMemo.append(mk('dt', null, '備考'), vMemo);
+    fields.append(fAt, fBy, fMemo);
+
+    const hint = mk('div', 'hint');
+    const hLabel = mk('span', 'hint-label', '場所');
+    const seal = mk('button', 'seal', 'めくる');
+    seal.type = 'button'; seal.dataset.act = 'peek'; seal.dataset.id = it.id; seal.dataset.level = '1';
+    seal.setAttribute('aria-label', `${it.name}の場所のヒントを見る`);
+    const hText = mk('span', 'hint-text', '');
+    const more = mk('button', 'more', 'くわしく');
+    more.type = 'button'; more.dataset.act = 'peek'; more.dataset.id = it.id; more.dataset.level = '2';
+    const nohint = mk('span', 'nohint', 'ノーヒントで発見');
+    hint.append(hLabel, seal, hText, more, nohint);
+
+    body.append(titles, photo, fields, hint);
+    art.append(stub, body);
+    slips[it.id] = { art, add, none, print, img, stamp: st.s, sMid: st.mid, sBot: st.bot, bz, vAt, vBy, vMemo, fMemo, hLabel, seal, hText, more, nohint, lastSrc: '' };
+    return art;
+  }
+
+  function buildLedger() {
+    AREAS.forEach((a) => {
+      const sec = mk('section', 'area');
+      sec.setAttribute('aria-labelledby', 'area-h-' + a.key);
+      const head = mk('div', 'area-head');
+      const h2 = mk('h2', null, a.name); h2.id = 'area-h-' + a.key;
+      const count = mk('span', 'area-count num', '');
+      head.append(mk('span', 'area-key', a.key), h2, count);
+      const list = mk('div', 'slips');
+      sec.append(head, mk('p', 'area-note', a.note), list);
+      ITEMS.filter((i) => i.area === a.key).forEach((i) => list.append(buildSlip(i)));
+      areaEls[a.key] = { sec, list, count };
+      areasEl.append(sec);
+    });
+    ITEMS.forEach((it) => {
+      const li = mk('li');
+      const b = mk('button', 'cell', it.id);
+      b.type = 'button'; b.dataset.act = 'jump'; b.dataset.id = it.id;
+      li.append(b); stripEl.append(li); cells[it.id] = b;
+    });
+  }
+
+  const nameInputs = [];
+  const chipBtns = [];
+  function buildPeople() {
+    const namesEl = $('#wm-names');
+    const chipsEl = $('#wm-chips');
+    for (let i = 0; i < MAX_PEOPLE; i++) {
+      const wrap = mk('div');
+      const lb = mk('label', 'vh', `${i + 1}人目の名前`);
+      lb.htmlFor = 'wm-name-' + i;
+      const inp = mk('input');
+      inp.id = 'wm-name-' + i; inp.type = 'text'; inp.maxLength = 8; inp.autocomplete = 'off'; inp.dataset.i = String(i);
+      wrap.append(lb, inp);
+      namesEl.append(wrap);
+      nameInputs.push({ wrap, inp, lb });
+      const chip = mk('button', 'chip');
+      chip.type = 'button'; chip.setAttribute('role', 'radio'); chip.dataset.act = 'clerk'; chip.dataset.i = String(i);
+      chipsEl.append(chip);
+      chipBtns.push(chip);
+    }
+    namesEl.addEventListener('input', (e) => {
+      const t = e.target;
+      if (!(t instanceof HTMLInputElement) || !editable()) return;
+      const i = Number(t.dataset.i);
+      S.names[i] = clipStr(t.value, 8);
+      saveState();
+      renderAll();
+    });
+  }
+
+  function applyRoute() {
+    const west = cur().route === 'west';
+    const keys = AREAS.map((a) => a.key);
+    if (west) keys.reverse();
+    keys.forEach((k) => {
+      const a = areaEls[k];
+      areasEl.append(a.sec);
+      const ids = ITEMS.filter((i) => i.area === k).map((i) => i.id);
+      if (west) ids.reverse();
+      ids.forEach((id) => a.list.append(slips[id].art));
+    });
+    const order = ITEMS.map((i) => i.id);
+    if (west) order.reverse();
+    order.forEach((id) => stripEl.append(cells[id].parentNode));
+    document.querySelectorAll('[data-act="route"]').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === (west ? 'west' : 'north'))));
+  }
+
+  /* ── rendering ── */
+  function renderSlip(id) {
+    const it = byId[id];
+    const s = slips[id];
+    const st = cur();
+    const f = st.finds[id];
+    const src = urlOf(id);
+    const has = !!(f && src);
+    const ed = editable();
+    s.art.classList.toggle('is-filled', has);
+    s.add.hidden = has || !ed;
+    s.none.hidden = has || ed;
+    s.print.hidden = !has;
+    s.stamp.hidden = !has;
+    s.bz.hidden = !busy.has(id);
+    if (has) {
+      if (s.lastSrc !== src) { s.lastSrc = src; s.print.classList.remove('is-broken'); s.img.src = src; }
+      s.img.alt = `${it.name}の写真`;
+      s.print.setAttribute('aria-label', `${it.name}の写真を開く`);
+      s.sMid.textContent = fmtStamp(f.at);
+      s.sBot.textContent = clip(personName(st, f.by), 5);
+      s.vAt.textContent = fmtTime(f.at);
+      s.vBy.textContent = personName(st, f.by);
+      const memo = (f.memo || '').trim();
+      s.vMemo.textContent = memo || '—';
+      s.fMemo.classList.toggle('is-empty', !memo);
+    }
+    const lvl = st.hints[id] || 0;
+    s.seal.hidden = lvl > 0 || has;
+    s.hText.hidden = lvl === 0;
+    s.hText.textContent = lvl >= 2 ? `${it.h1}。${it.h2}` : it.h1;
+    s.more.hidden = lvl !== 1;
+    s.nohint.hidden = !(has && lvl === 0);
+    s.hLabel.hidden = has && lvl === 0;
+    if (stampIn === id && has) {
+      s.art.classList.remove('stamp-in');
+      void s.art.offsetWidth;
+      s.art.classList.add('stamp-in');
+      setTimeout(() => s.art.classList.remove('stamp-in'), 900);
+    }
+  }
+
+  function renderStatus() {
+    const st = cur();
+    const s = stats(st);
+    $('#wm-count').textContent = pad2(s.found.length);
+    ITEMS.forEach((it) => {
+      const on = !!st.finds[it.id];
+      cells[it.id].classList.toggle('on', on);
+      cells[it.id].setAttribute('aria-label', `No.${it.id} ${it.short}${on ? '（受付済み）' : ''}へ移動`);
+    });
+    const now = new Date();
+    const firstEl = $('#wm-first'), elEl = $('#wm-elapsed'), lbl = $('#wm-elapsed-label');
+    if (!s.first) { firstEl.textContent = '—'; elEl.textContent = '—'; lbl.textContent = '経過'; }
+    else {
+      firstEl.textContent = sameDay(s.first, now) ? fmtHM(s.first) : `${s.first.getMonth() + 1}/${s.first.getDate()} ${fmtHM(s.first)}`;
+      if (s.done) { lbl.textContent = '所要'; elEl.textContent = fmtDur(s.last - s.first); }
+      else if (sameDay(s.first, now)) { lbl.textContent = '経過'; elEl.textContent = fmtDur(now - s.first); }
+      else { lbl.textContent = '経過'; elEl.textContent = `${Math.max(1, Math.round((now - s.first) / 86400000))}日`; }
+    }
+    $('#wm-partial').hidden = !(s.found.length > 0 && !s.done);
+    AREAS.forEach((a) => {
+      const its = ITEMS.filter((i) => i.area === a.key);
+      const n = its.filter((i) => st.finds[i.id]).length;
+      areaEls[a.key].count.textContent = `${n} / ${its.length}`;
+      areaEls[a.key].sec.classList.toggle('is-done', n === its.length);
+    });
+    $('#wm-reset-row').hidden = !(editable() && s.found.length > 0);
+  }
+
+  function renderPeople() {
+    const sec = $('#wm-people');
+    sec.hidden = !!demo;
+    if (demo) return;
+    const st = S;
+    const ed = editable();
+    $('#wm-people-n').textContent = `${st.count}人`;
+    const minUsed = Math.max(1, ...Object.values(st.finds).map((f) => f.by + 1));
+    $('#wm-minus').disabled = !ed || st.count <= minUsed;
+    $('#wm-plus').disabled = !ed || st.count >= MAX_PEOPLE;
+    nameInputs.forEach(({ wrap, inp, lb }, i) => {
+      wrap.hidden = i >= st.count;
+      inp.placeholder = st.count === 1 ? '名前（空欄でもOK）' : `${i + 1}人目`;
+      lb.textContent = st.count === 1 ? '名前' : `${i + 1}人目の名前`;
+      if (document.activeElement !== inp && inp.value !== st.names[i]) inp.value = st.names[i];
+      inp.disabled = !ed;
+    });
+    $('#wm-current-ctl').hidden = st.count < 2;
+    chipBtns.forEach((b, i) => {
+      b.hidden = i >= st.count;
+      b.textContent = personName(st, i);
+      b.setAttribute('aria-checked', String(i === st.current));
+    });
+    let help = st.count === 1
+      ? '名前は受付印と記念の一枚に入ります。何人かで回るときは、人数を増やしてください。'
+      : '1台のスマホで交代しながら受付します。写真を貼る人を「いまの受付係」で選んでください。';
+    if (minUsed > 1 && st.count <= minUsed) help += `受付済みの人がいるので、${minUsed}人より少なくはできません。`;
+    $('#wm-people-help').textContent = help;
+  }
+
+  function renderConn() {
+    const c = $('#wm-conn');
+    let m = storage, t = '読み込み中…';
+    if (demo) { m = 'demo'; t = '見本を表示中'; }
+    else if (storage === 'idb') t = 'この端末に保存中';
+    else if (storage === 'memory') t = '保存されない表示';
+    c.dataset.mode = m;
+    c.textContent = t;
+  }
+
+  function renderBanner() {
+    const b = $('#wm-banner');
+    b.textContent = '';
+    b.removeAttribute('data-kind');
+    if (demo) {
+      b.dataset.kind = 'demo';
+      b.append(mk('span', null, '3人で17点そろったときの見本です。写真は仮のもので、保存もされません。'));
+      const back = mk('button', 'btn', 'ふだんの表示に戻る');
+      back.type = 'button'; back.dataset.act = 'demo-exit';
+      b.append(back);
+      b.hidden = false;
+      return;
+    }
+    if (storage === 'memory') {
+      b.dataset.kind = 'warn';
+      b.append(mk('span', null, 'この表示では記録を保存できません（プライベートブラウズなど）。ページを閉じると消えるので、途中でも「いまの記録を画像にする」で保存してください。'));
+      b.hidden = false;
+      return;
+    }
+    b.hidden = true;
+  }
+
+  const certGrid = $('#wm-c-grid');
+  const certImgs = {};
+  function renderCert() {
+    const st = cur();
+    const s = stats(st);
+    const cert = $('#wm-cert');
+    cert.hidden = !s.done;
+    if (!s.done) return;
+    const a = s.first, z = s.last;
+    $('#wm-c-date').textContent = sameDay(a, z) ? fmtDateJa(a) : `${fmtDateJa(a)} 〜 ${z.getMonth() + 1}月${z.getDate()}日`;
+    $('#wm-c-time').textContent = sameDay(a, z) ? `${fmtHM(a)} 〜 ${fmtHM(z)}（${fmtDur(z - a)}）` : `${fmtHM(a)} 受付開始、${z.getMonth() + 1}/${z.getDate()} ${fmtHM(z)} 完了`;
+    $('#wm-c-clerks').textContent = clerkSummary(st);
+    const nh = s.found.filter((it) => !(st.hints[it.id] > 0)).length;
+    $('#wm-c-nohint').textContent = `${TOTAL}点のうち ${nh}点`;
+    $('#wm-c-seal').textContent = fmtStamp(z.toISOString());
+    $('#wm-c-people').textContent = PEOPLE_WORD[st.count - 1] || `${st.count}にん`;
+    if (!certGrid.childElementCount) {
+      ITEMS.forEach((it) => {
+        const li = mk('li');
+        const im = mk('img'); im.alt = it.name; im.decoding = 'async';
+        li.append(im, mk('span', null, it.id));
+        certGrid.append(li); certImgs[it.id] = im;
+      });
+    }
+    ITEMS.forEach((it) => { const src = urlOf(it.id) || ''; if (certImgs[it.id].dataset.src !== src) { certImgs[it.id].dataset.src = src; certImgs[it.id].src = src; } });
+    $('#wm-collage-help').textContent = canSave()
+      ? `${TOTAL}枚の写真と記録を、縦長の画像1枚にまとめます。`
+      : `${TOTAL}枚の写真と記録を1枚にまとめます。できた画像を長押しして保存してください。`;
+    if (celebrateNext || demo) {
+      celebrateNext = false;
+      cert.classList.remove('celebrate'); void cert.offsetWidth; cert.classList.add('celebrate');
+    }
+  }
+
+  function renderAll() {
+    ITEMS.forEach((it) => renderSlip(it.id));
+    renderStatus();
+    renderPeople();
+    renderConn();
+    renderBanner();
+    renderCert();
+  }
+
+  /* ── toast ── */
+  let toastTimer = 0, toastAction = null;
+  function toast(msg, action, ms) {
+    const t = $('#wm-toast');
+    $('#wm-toast-msg').textContent = msg;
+    const btn = $('#wm-toast-btn');
+    toastAction = action || null;
+    btn.hidden = !action;
+    if (action) btn.textContent = action.label;
+    t.hidden = false;
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => { t.hidden = true; toastAction = null; }, ms || (action ? 9000 : 4200));
+  }
+
+  /* ── saving files to the device ── */
+  function use(name) {
+    try {
+      if (window.claude && typeof window.claude.use === 'function') return Promise.resolve(window.claude.use(name)).catch(() => null);
+    } catch (e) { /* not inside claude.ai */ }
+    return Promise.resolve(null);
+  }
+  const UNAVAILABLE = ['unavailable', 'not_granted', 'capability_disabled', 'capability_removed', 'extension_not_enabled'];
+  async function saveFile(blob, filename) {
+    if (DL) {
+      try { await DL.save({ filename, data: blob }); toast('保存しました'); return; }
+      catch (e) {
+        const code = e && e.code;
+        if (code === 'declined') return;
+        if (code === 'rate_limited') { toast('少し待ってから、もう一度お試しください。'); return; }
+        if (UNAVAILABLE.includes(code)) { toast('この表示では保存ボタンが使えません。画像を長押しして保存してください。'); return; }
+        toast('保存できませんでした。もう一度お試しください。');
+        return;
+      }
+    }
+    if (framed) { toast('この表示では保存ボタンが使えません。画像を長押しして保存してください。'); return; }
+    try {
+      const file = new File([blob], filename, { type: blob.type || 'image/jpeg' });
+      if (navigator.canShare && navigator.share && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file] });
+        return;
+      }
+    } catch (e) {
+      if (e && e.name === 'AbortError') return;
+    }
+    try {
+      const href = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = href; a.download = filename; a.rel = 'noopener';
+      document.body.append(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(href), 60000);
+      toast('保存しました。見つからないときは、画像を長押しして保存してください。');
+    } catch (e) {
+      toast('保存できませんでした。画像を長押しして保存してください。');
+    }
+  }
+
+  /* ── photos ── */
+  async function shrink(file) {
+    const MAX = 1600;
+    let src = null, w = 0, h = 0, done = () => {};
+    try {
+      src = await createImageBitmap(file, { imageOrientation: 'from-image' });
+      w = src.width; h = src.height; done = () => { try { src.close(); } catch (e) { /* ignore */ } };
+    } catch (e) {
+      const url = URL.createObjectURL(file);
+      src = await new Promise((res, rej) => { const im = new Image(); im.onload = () => res(im); im.onerror = rej; im.src = url; });
+      w = src.naturalWidth; h = src.naturalHeight; done = () => URL.revokeObjectURL(url);
+    }
+    if (!w || !h) { done(); throw new Error('decode'); }
+    const k = Math.min(1, MAX / Math.max(w, h));
+    const c = document.createElement('canvas');
+    c.width = Math.max(1, Math.round(w * k)); c.height = Math.max(1, Math.round(h * k));
+    c.getContext('2d').drawImage(src, 0, 0, c.width, c.height);
+    done();
+    const blob = await new Promise((res) => c.toBlob(res, 'image/jpeg', 0.85));
+    if (!blob) throw new Error('encode');
+    return blob;
+  }
+
+  const fileInput = $('#wm-file');
+  let targetId = null;
+  function startAdd(id) {
+    if (!editable() || busy.has(id)) return;
+    targetId = id;
+    fileInput.value = '';
+    fileInput.click();
+  }
+  fileInput.addEventListener('change', () => {
+    const file = fileInput.files && fileInput.files[0];
+    const id = targetId;
+    targetId = null;
+    if (file && id) addPhoto(id, file);
+  });
+
+  async function addPhoto(id, file) {
+    if (!editable()) return;
+    busy.add(id); renderSlip(id);
+    let blob;
+    try { blob = await shrink(file); }
+    catch (e) {
+      if (/^image\/(jpeg|png|webp|gif)$/.test(file.type) && file.size < 15 * 1024 * 1024) blob = file;
+      else { busy.delete(id); renderSlip(id); toast('この写真は読み込めませんでした。別の写真を選んでください。'); return; }
+    }
+    const wasDone = stats(S).done;
+    const prev = S.finds[id];
+    const now = new Date().toISOString();
+    const rec = { at: prev ? prev.at : now, photoAt: now, by: prev ? prev.by : (S.count > 1 ? S.current : 0), memo: prev ? prev.memo : '' };
+    S.finds[id] = rec;
+    setPhoto(id, blob);
+    if (storage === 'idb') {
+      try { await IDB.put('photos', id, blob); await saveStateNow(); }
+      catch (e) { storeFailed(); }
+    }
+    busy.delete(id);
+    if (!prev) stampIn = id;
+    const nowDone = stats(S).done;
+    if (nowDone && !wasDone) celebrateNext = true;
+    renderAll();
+    stampIn = null;
+    requestPersist();
+    const who = S.count > 1 ? `（${personName(S, rec.by)}）` : '';
+    const msg = `No.${id} を受付しました${who}`;
+    if (canSave()) {
+      const keep = /^image\/(jpeg|png|webp)$/.test(file.type) ? file : blob;
+      const ext = keep.type === 'image/png' ? 'png' : keep.type === 'image/webp' ? 'webp' : 'jpg';
+      toast(msg, { label: '端末にも保存', run: () => saveFile(keep, `wasuremono-${id}.${ext}`) });
+    } else toast(msg);
+    if (nowDone && !wasDone) setTimeout(() => $('#wm-cert').scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }), 700);
+  }
+
+  /* ── hints ── */
+  function peek(id, level) {
+    const st = cur();
+    st.hints[id] = Math.max(st.hints[id] || 0, level);
+    if (!demo) saveState();
+    renderSlip(id);
+    const s = slips[id];
+    s.hText.classList.remove('peel'); void s.hText.offsetWidth; s.hText.classList.add('peel');
+  }
+
+  /* ── dialogs ── */
+  function openDialog(d) { if (typeof d.showModal === 'function') { try { d.showModal(); return; } catch (e) { /* fall back */ } } d.setAttribute('open', ''); }
+  function closeDialog(d) { if (typeof d.close === 'function') { try { d.close(); return; } catch (e) { /* fall back */ } } d.removeAttribute('open'); }
+
+  const sheet = $('#wm-sheet');
+  let sheetId = null;
+  let undoTimer = 0;
+  function openSheet(id) {
+    const it = byId[id];
+    const st = cur();
+    const f = st.finds[id];
+    if (!f || !urlOf(id)) return;
+    sheetId = id;
+    $('#wm-s-film').textContent = it.film;
+    $('#wm-sheet-title').textContent = `No.${id}　${it.name}`;
+    const img = $('#wm-s-img'); img.src = urlOf(id); img.alt = `${it.name}の写真`;
+    $('#wm-s-at').textContent = fmtTime(f.at);
+    $('#wm-s-by').textContent = personName(st, f.by);
+    const memo = f.memo || '';
+    const ed = editable();
+    $('#wm-memo').value = memo;
+    $('#wm-s-memo-field').hidden = !ed;
+    $('#wm-s-edit').hidden = !ed;
+    const ro = $('#wm-s-memo-ro'); ro.hidden = ed || !memo.trim(); ro.textContent = memo;
+    $('#wm-s-save').hidden = !canSave();
+    $('#wm-s-undo').hidden = !ed;
+    $('#wm-s-actions').hidden = !canSave() && !ed;
+    disarmUndo();
+    openDialog(sheet);
+  }
+  function disarmUndo() { clearTimeout(undoTimer); const u = $('#wm-s-undo'); u.classList.remove('armed'); u.textContent = '受付を取り消す'; }
+  async function undoClick(btn) {
+    if (!btn.classList.contains('armed')) {
+      btn.classList.add('armed'); btn.textContent = 'もう一度押すと取り消します';
+      undoTimer = setTimeout(disarmUndo, 4000);
+      return;
+    }
+    disarmUndo();
+    const id = sheetId;
+    if (!editable() || !S.finds[id]) return;
+    delete S.finds[id];
+    dropPhoto(id);
+    if (storage === 'idb') { try { await IDB.del('photos', id); await saveStateNow(); } catch (e) { storeFailed(); } }
+    closeDialog(sheet);
+    renderAll();
+    toast(`No.${id} の受付を取り消しました`);
+  }
+  function saveMemo() {
+    const id = sheetId;
+    if (!editable() || !S.finds[id]) return;
+    S.finds[id].memo = clipStr($('#wm-memo').value, 60);
+    saveState();
+    renderAll();
+    closeDialog(sheet);
+    toast('備考を保存しました');
+  }
+  async function blobOf(id) {
+    if (!demo && blobs[id]) return blobs[id];
+    const r = await fetch(urlOf(id));
+    return r.blob();
+  }
+  async function savePhoto() {
+    const id = sheetId;
+    try { await saveFile(await blobOf(id), `wasuremono-${id}.jpg`); }
+    catch (e) { toast('写真を用意できませんでした。'); }
+  }
+  sheet.addEventListener('click', (e) => { if (e.target === sheet) closeDialog(sheet); });
+  sheet.addEventListener('close', disarmUndo);
+
+  /* ── 記念の一枚 ── */
+  function fitText(g, text, weight, maxPx, minPx, family, maxW) {
+    for (let px = maxPx; px >= minPx; px--) {
+      g.font = `${weight} ${px}px ${family}`;
+      if (g.measureText(text).width <= maxW) return text;
+    }
+    const t = Array.from(text);
+    while (t.length > 1 && g.measureText(t.join('') + '…').width > maxW) t.pop();
+    return t.join('') + '…';
+  }
+  function wrapText(g, text, maxW, maxLines) {
+    const NO_START = '、。，．！？!?）」』…ーっゃゅょッャュョ';
+    const chars = Array.from(text);
+    const lines = [];
+    let line = '';
+    let i = 0;
+    for (; i < chars.length; i++) {
+      const ch = chars[i];
+      const t = line + ch;
+      if (line && g.measureText(t).width > maxW && !NO_START.includes(ch)) {
+        lines.push(line);
+        line = ch;
+        if (lines.length === maxLines) { line = ''; break; }
+      } else line = t;
+    }
+    if (line && lines.length < maxLines) { lines.push(line); i = chars.length; }
+    if (i < chars.length && lines.length) {
+      const last = Array.from(lines[lines.length - 1]);
+      while (last.length > 1 && g.measureText(last.join('') + '…').width > maxW) last.pop();
+      lines[lines.length - 1] = last.join('') + '…';
+    }
+    return lines;
+  }
+  function loadImg(src) {
+    return new Promise((res) => {
+      const im = new Image();
+      let t = setTimeout(() => { t = 0; res(null); }, 20000);
+      im.onload = () => { if (t) { clearTimeout(t); res(im); } };
+      im.onerror = () => { if (t) { clearTimeout(t); res(null); } };
+      im.src = src;
+    });
+  }
+  async function loadFonts(text) {
+    if (!document.fonts || typeof document.fonts.load !== 'function') return;
+    const specs = ['900 40px "Zen Kaku Gothic New"', '500 20px "Zen Kaku Gothic New"', '700 20px "Zen Kaku Gothic New"', '600 20px "Klee One"', '600 20px "IBM Plex Mono"'];
+    await Promise.race([Promise.all(specs.map((s) => document.fonts.load(s, text).catch(() => null))), sleep(3000)]);
+  }
+  function drawCover(g, im, x, y, w, h) {
+    const r = Math.max(w / im.naturalWidth, h / im.naturalHeight);
+    const sw = w / r, sh = h / r;
+    g.drawImage(im, (im.naturalWidth - sw) / 2, (im.naturalHeight - sh) / 2, sw, sh, x, y, w, h);
+  }
+  function drawSeal(g, cx, cy, r, top, mid, bot, color) {
+    const size = Math.ceil(r * 2 + 24);
+    const c = document.createElement('canvas'); c.width = size; c.height = size;
+    const s = c.getContext('2d');
+    s.translate(size / 2, size / 2); s.rotate(-10 * Math.PI / 180);
+    s.strokeStyle = color; s.fillStyle = color;
+    s.lineWidth = r * 0.06; s.beginPath(); s.arc(0, 0, r, 0, Math.PI * 2); s.stroke();
+    const yl = r * 0.3, half = Math.sqrt(r * r - yl * yl);
+    s.lineWidth = r * 0.035; s.beginPath(); s.moveTo(-half, -yl); s.lineTo(half, -yl); s.moveTo(-half, yl); s.lineTo(half, yl); s.stroke();
+    s.textAlign = 'center'; s.textBaseline = 'middle';
+    s.font = `900 ${Math.round(r * 0.25)}px ${F_PRINT}`; s.fillText(top, 0, -(r + yl) / 2 + r * 0.03);
+    s.font = `600 ${Math.round(r * 0.28)}px ${F_NUM}`; s.fillText(mid, 0, 0);
+    s.font = `600 ${Math.round(r * 0.27)}px ${F_HAND}`; s.fillText(bot, 0, (r + yl) / 2 - r * 0.03);
+    s.setTransform(1, 0, 0, 1, 0, 0);
+    s.globalCompositeOperation = 'destination-out';
+    for (let i = 0; i < 320; i++) { s.globalAlpha = 0.2 + Math.random() * 0.6; s.beginPath(); s.arc(Math.random() * size, Math.random() * size, 0.4 + Math.random() * 1.6, 0, Math.PI * 2); s.fill(); }
+    g.save(); g.globalAlpha = 0.92; g.drawImage(c, cx - size / 2, cy - size / 2); g.restore();
+  }
+
+  async function makeCollage(st) {
+    const s = stats(st);
+    const k = s.found.length;
+    const W = 1200, P = 72, G = 20, COLS = 3;
+    const ROWS = Math.ceil(TOTAL / COLS);
+    const emptyCell = ROWS * COLS > TOTAL;
+    const cell = Math.floor((W - P * 2 - G * (COLS - 1)) / COLS);
+    const capH = 128, headH = 330;
+    const a = s.first, z = s.last;
+    const dateLine = sameDay(a, z) ? `${fmtDateJa(a)}　${fmtHM(a)}〜${fmtHM(z)}` : `${fmtDateJa(a)}〜${z.getMonth() + 1}月${z.getDate()}日`;
+    const lead = s.done ? `ベンチに置き忘れられていた品、${kan(TOTAL)}点。すべて受付を完了しました。` : `ベンチに置き忘れられていた品、${kan(TOTAL)}点のうち${kan(k)}点を受付しました。`;
+    const nh = s.found.filter((it) => !(st.hints[it.id] > 0)).length;
+    const clerkText = `受付係　${clerkSummary(st)}`;
+    const timeText = s.done ? `所要時間　${fmtDur(z - a)}` : `受付済み　${k} / ${TOTAL}点`;
+    const nhText = `ノーヒントで見つけた品　${nh}点`;
+    const sealTop = s.done ? '受付完了' : '受付記録';
+    const sealMid = fmtStamp(z.toISOString());
+    const sealBot = PEOPLE_WORD[st.count - 1] || `${st.count}にん`;
+    const people = Array.from({ length: st.count }, (_, i) => personName(st, i));
+    const allText = ['モリコロパーク　忘れもの係', '忘れもの受付帳', dateLine, lead, sealTop, sealMid, sealBot, clerkText, timeText, nhText, '未受付', ...people,
+      ...ITEMS.map((i) => i.short + i.id + ((st.finds[i.id] && st.finds[i.id].memo) || '')), '0123456789:.・／〜…'].join('');
+    await loadFonts(allText);
+
+    const meas = document.createElement('canvas').getContext('2d');
+    meas.font = `600 34px ${F_HAND}`;
+    const footW = W - P * 2 - (emptyCell ? 0 : 290);
+    const footLines = [...wrapText(meas, clerkText, footW, 3), timeText, nhText];
+    const footH = Math.max(emptyCell ? 0 : 300, 50 + footLines.length * 58 + 20);
+    const gridH = ROWS * (cell + capH) + (ROWS - 1) * G;
+    const H = P + headH + gridH + 20 + footH + P;
+    const imgs = await Promise.all(ITEMS.map((it) => (st.finds[it.id] && urlOf(it.id) ? loadImg(urlOf(it.id)) : Promise.resolve(null))));
+
+    const c = document.createElement('canvas'); c.width = W; c.height = H;
+    const g = c.getContext('2d');
+    const C = { paper: '#F7F9F4', blank: '#EEF2EC', rule: '#2E6251', ink: '#1B2420', ink2: '#6B7A73', pen: '#22397C', shu: '#C4302A', line: '#C9D6CD' };
+    g.fillStyle = C.paper; g.fillRect(0, 0, W, H);
+    g.strokeStyle = C.rule; g.lineWidth = 5; g.strokeRect(30, 30, W - 60, H - 60);
+    g.lineWidth = 1.5; g.strokeRect(42, 42, W - 84, H - 84);
+    g.textBaseline = 'alphabetic'; g.textAlign = 'left';
+    g.fillStyle = C.ink2; g.font = `500 26px ${F_PRINT}`; g.fillText('モリコロパーク　忘れもの係', P, P + 60);
+    g.fillStyle = C.ink; g.font = `900 80px ${F_PRINT}`; g.fillText('忘れもの受付帳', P, P + 158);
+    g.fillStyle = C.pen; g.font = `600 36px ${F_HAND}`; g.fillText(dateLine, P, P + 222);
+    g.fillStyle = C.ink; g.font = `500 25px ${F_PRINT}`; g.fillText(lead, P, P + 274);
+    g.strokeStyle = C.rule; g.lineWidth = 2; g.beginPath(); g.moveTo(P, P + 300); g.lineTo(W - P, P + 300); g.stroke();
+
+    ITEMS.forEach((it, i) => {
+      const f = st.finds[it.id];
+      const col = i % COLS, row = Math.floor(i / COLS);
+      const x = P + col * (cell + G);
+      const y = P + headH + row * (cell + capH + G);
+      if (f) {
+        g.fillStyle = '#FFFFFF'; g.fillRect(x, y, cell, cell);
+        g.strokeStyle = C.line; g.lineWidth = 1; g.strokeRect(x + 0.5, y + 0.5, cell - 1, cell - 1);
+        const im = imgs[i];
+        if (im) drawCover(g, im, x + 8, y + 8, cell - 16, cell - 16);
+        else { g.fillStyle = C.line; g.fillRect(x + 8, y + 8, cell - 16, cell - 16); }
+        g.fillStyle = 'rgba(18,24,21,.78)'; g.fillRect(x + 8, y + 8, 64, 38);
+        g.fillStyle = '#F4F7F3'; g.font = `600 24px ${F_NUM}`; g.fillText(it.id, x + 20, y + 36);
+        const d = toDate(f.at);
+        const right = st.count > 1 ? `${d ? fmtHM(d) : ''}　${personName(st, f.by)}` : (d ? fmtHM(d) : '');
+        g.font = `600 21px ${F_HAND}`;
+        const rw = g.measureText(right).width;
+        g.textAlign = 'right'; g.fillStyle = C.pen; g.fillText(right, x + cell - 2, y + cell + 34); g.textAlign = 'left';
+        const nm = fitText(g, it.short, 700, 23, 17, F_PRINT, cell - rw - 18);
+        g.fillStyle = C.ink; g.fillText(nm, x + 2, y + cell + 34);
+      } else {
+        g.fillStyle = C.blank; g.fillRect(x, y, cell, cell);
+        g.strokeStyle = C.line; g.lineWidth = 2; g.setLineDash([8, 7]); g.strokeRect(x + 1, y + 1, cell - 2, cell - 2); g.setLineDash([]);
+        g.fillStyle = C.ink2; g.font = `700 28px ${F_PRINT}`; g.textAlign = 'center'; g.fillText('未受付', x + cell / 2, y + cell / 2 + 10); g.textAlign = 'left';
+        g.fillStyle = C.ink2; g.font = `600 24px ${F_NUM}`; g.fillText(it.id, x + 20, y + 36);
+        const nm = fitText(g, it.short, 700, 23, 17, F_PRINT, cell - 4);
+        g.fillStyle = C.ink2; g.fillText(nm, x + 2, y + cell + 34);
+      }
+      g.strokeStyle = C.line; g.lineWidth = 1.5; g.setLineDash([2, 4]);
+      [y + cell + 82, y + cell + 114].forEach((ly) => { g.beginPath(); g.moveTo(x + 2, ly); g.lineTo(x + cell - 2, ly); g.stroke(); });
+      g.setLineDash([]);
+      const memo = f && typeof f.memo === 'string' ? f.memo.trim() : '';
+      if (memo) {
+        g.font = `600 20px ${F_HAND}`; g.fillStyle = C.pen;
+        wrapText(g, memo, cell - 6, 2).forEach((ln, n) => g.fillText(ln, x + 2, y + cell + 74 + n * 32));
+      }
+    });
+
+    if (emptyCell) {
+      const col = TOTAL % COLS, row = Math.floor(TOTAL / COLS);
+      const x = P + col * (cell + G);
+      const y = P + headH + row * (cell + capH + G);
+      drawSeal(g, x + cell / 2, y + (cell + capH) / 2 - 6, 130, sealTop, sealMid, sealBot, C.shu);
+    }
+    const fy = P + headH + gridH + 20;
+    g.strokeStyle = C.rule; g.lineWidth = 2; g.beginPath(); g.moveTo(P, fy); g.lineTo(W - P, fy); g.stroke();
+    g.fillStyle = C.pen; g.font = `600 34px ${F_HAND}`;
+    footLines.forEach((t, i) => g.fillText(t, P, fy + 70 + i * 58));
+    if (!emptyCell) drawSeal(g, W - P - 130, fy + 140, 118, sealTop, sealMid, sealBot, C.shu);
+
+    const blob = await new Promise((res) => c.toBlob(res, 'image/jpeg', 0.92));
+    if (!blob) throw new Error('encode');
+    const ymd = `${z.getFullYear()}${pad2(z.getMonth() + 1)}${pad2(z.getDate())}`;
+    const filename = demo ? 'wasuremono-mihon.jpg' : s.done ? `wasuremono-${ymd}.jpg` : `wasuremono-${ymd}-${k}of${TOTAL}.jpg`;
+    return { blob, filename };
+  }
+
+  const pv = $('#wm-pv');
+  let pvBlob = null, pvName = '', pvURL = '';
+  pv.addEventListener('click', (e) => { if (e.target === pv) closeDialog(pv); });
+  async function openCollage(btn) {
+    const st = cur();
+    if (!stats(st).found.length) return;
+    btn.disabled = true;
+    const label = btn.textContent;
+    btn.textContent = '画像を作っています…';
+    try {
+      const out = await makeCollage(st);
+      if (pvURL) URL.revokeObjectURL(pvURL);
+      pvBlob = out.blob; pvName = out.filename; pvURL = URL.createObjectURL(out.blob);
+      $('#wm-pv-img').src = pvURL;
+      const ok = canSave();
+      $('#wm-pv-save').hidden = !ok;
+      $('#wm-pv-help').textContent = ok ? '保存ボタンが使えないときは、画像を長押しして保存できます。' : '画像を長押しして保存してください。';
+      openDialog(pv);
+    } catch (e) {
+      toast('画像を作れませんでした。もう一度お試しください。');
+    } finally {
+      btn.disabled = false;
+      btn.textContent = label;
+    }
+  }
+
+  /* ── reset ── */
+  let resetTimer = 0;
+  function disarmReset() { clearTimeout(resetTimer); const b = $('#wm-reset'); b.classList.remove('armed'); b.textContent = '記録と写真をすべて消す'; }
+  async function resetClick(btn) {
+    if (!btn.classList.contains('armed')) {
+      btn.classList.add('armed'); btn.textContent = 'もう一度押すと、すべて消します';
+      resetTimer = setTimeout(disarmReset, 5000);
+      return;
+    }
+    disarmReset();
+    if (!editable()) return;
+    S.finds = {}; S.hints = {};
+    Object.keys(urls).forEach(dropPhoto);
+    if (storage === 'idb') { try { await IDB.clear('photos'); await saveStateNow(); } catch (e) { storeFailed(); } }
+    renderAll();
+    window.scrollTo(0, 0);
+    toast('記録と写真をすべて消しました');
+  }
+
+  /* ── sample (見本) ── */
+  function demoImage(i) {
+    const c = document.createElement('canvas'); c.width = 640; c.height = 480;
+    const g = c.getContext('2d');
+    const hue = [150, 92, 32, 205, 122, 58, 172, 14, 108, 44, 140, 80, 192, 24, 160, 66, 130][i % 17];
+    const grd = g.createLinearGradient(0, 0, 640, 480);
+    grd.addColorStop(0, `hsl(${hue} 26% 74%)`); grd.addColorStop(1, `hsl(${(hue + 36) % 360} 28% 44%)`);
+    g.fillStyle = grd; g.fillRect(0, 0, 640, 480);
+    g.fillStyle = 'rgba(28,34,30,.55)';
+    g.fillRect(110, 300, 420, 22); g.fillRect(110, 246, 420, 14); g.fillRect(140, 322, 16, 74); g.fillRect(484, 322, 16, 74);
+    g.fillStyle = 'rgba(250,250,244,.85)'; g.beginPath(); g.ellipse(320 + ((i * 37) % 120) - 60, 282, 46 + (i % 3) * 10, 22, 0, 0, Math.PI * 2); g.fill();
+    g.fillStyle = 'rgba(255,255,255,.94)'; g.font = `600 42px ${F_NUM}`; g.fillText('No.' + ITEMS[i].id, 30, 68);
+    g.font = `700 28px ${F_PRINT}`; g.fillText('見本', 30, 112);
+    return c.toDataURL('image/jpeg', 0.8);
+  }
+  function makeDemo() {
+    const st = DEFAULT();
+    st.count = 3;
+    st.names = ['わたし', 'ともだち', 'いもうと', '', '', ''];
+    st.route = S.route;
+    const base = new Date(); base.setHours(10, 4, 0, 0);
+    const gaps = [0, 6, 4, 3, 5, 14, 9, 4, 17, 7, 6, 5, 12, 8, 15, 6, 9];
+    const hints = [0, 0, 0, 1, 0, 0, 2, 2, 0, 1, 2, 0, 0, 1, 1, 0, 2];
+    const who = [0, 1, 2, 0, 1, 2, 0, 0, 1, 2, 1, 0, 2, 1, 1, 0, 2];
+    const memos = { '07': '赤い屋根ですぐ分かった', '09': '思ったより大きくて、ちょっと怖い', '13': 'ベンチを突き抜けていて笑った', '17': '3人で3周して、やっと見つけた' };
+    const u = {};
+    let t = base.getTime();
+    ITEMS.forEach((it, i) => {
+      t += gaps[i] * 60000;
+      u[it.id] = demoImage(i);
+      st.finds[it.id] = { at: new Date(t).toISOString(), photoAt: new Date(t).toISOString(), by: who[i], memo: memos[it.id] || '' };
+      if (hints[i]) st.hints[it.id] = hints[i];
+    });
+    return { st, urls: u };
+  }
+  function onHash() {
+    const want = location.hash === '#mihon';
+    if (want === !!demo) return;
+    demo = want ? makeDemo() : null;
+    if (want) celebrateNext = true;
+    applyRoute();
+    renderAll();
+    if (want) window.scrollTo(0, 0);
+  }
+  function exitDemo() {
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { location.hash = ''; }
+    onHash();
+  }
+
+  /* ── events ── */
+  document.addEventListener('click', (e) => {
+    const t = e.target.closest('[data-act]');
+    if (!t) return;
+    const id = t.dataset.id;
+    switch (t.dataset.act) {
+      case 'add': startAdd(id); break;
+      case 'open': openSheet(id); break;
+      case 'peek': peek(id, Number(t.dataset.level) || 1); break;
+      case 'jump': { const s = slips[id]; if (s) s.art.scrollIntoView({ behavior: reduceMotion() ? 'auto' : 'smooth', block: 'start' }); break; }
+      case 'route': { cur().route = t.dataset.v === 'west' ? 'west' : 'north'; if (!demo) saveState(); applyRoute(); break; }
+      case 'minus': if (editable() && S.count > 1) { S.count -= 1; if (S.current >= S.count) S.current = S.count - 1; saveState(); renderAll(); } break;
+      case 'plus': if (editable() && S.count < MAX_PEOPLE) { S.count += 1; saveState(); renderAll(); } break;
+      case 'clerk': if (editable()) { S.current = Math.min(Number(t.dataset.i) || 0, S.count - 1); saveState(); renderPeople(); } break;
+      case 'close-sheet': closeDialog(sheet); break;
+      case 'memo-save': saveMemo(); break;
+      case 'retake': { const sid = sheetId; closeDialog(sheet); startAdd(sid); break; }
+      case 'save-photo': savePhoto(); break;
+      case 'undo': undoClick(t); break;
+      case 'collage': openCollage(t); break;
+      case 'pv-save': if (pvBlob) saveFile(pvBlob, pvName); break;
+      case 'close-pv': closeDialog(pv); break;
+      case 'reset': resetClick(t); break;
+      case 'demo-exit': exitDemo(); break;
+      case 'toast-action': { const a = toastAction; $('#wm-toast').hidden = true; toastAction = null; if (a) a.run(); break; }
+      default: break;
+    }
+  });
+  $('#wm-memo').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); saveMemo(); } });
+
+  /* ── start ── */
+  async function load() {
+    try {
+      const st = normalize(await IDB.get('kv', 'state'));
+      for (const id of Object.keys(st.finds)) {
+        let b = null;
+        try { b = await IDB.get('photos', id); } catch (e) { b = null; }
+        if (b instanceof Blob && b.size) setPhoto(id, b);
+        else delete st.finds[id];
+      }
+      S = st;
+      storage = 'idb';
+    } catch (e) {
+      storage = 'memory';
+    }
+    applyRoute();
+    renderAll();
+  }
+
+  buildLedger();
+  buildPeople();
+  applyRoute();
+  window.addEventListener('hashchange', onHash);
+  onHash();
+  renderAll();
+  use('downloads').then((d) => { DL = d; renderAll(); });
+  load();
+  setInterval(renderStatus, 30000);
+})();
+</script>
+</body>
+</html>

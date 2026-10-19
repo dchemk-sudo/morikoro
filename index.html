@@ -19,44 +19,129 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Klee+One:wght@600&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: 受付票の束 — one ledger column. Each bench is a claim slip: a numbered stub, a photo field, and a date stamp pressed across the photo's edge. Printed parts use the gothic, what visitors fill in uses the pen hand, and the stamp is the only red. */
+/* Layout: 木漏れ日の下の受付票 — a leaf canopy with dappled light hangs over the top of the page, and the ledger column of claim slips sits below it on a young-leaf ground. Printed parts use the gothic, what visitors fill in uses the pen hand, and the stamp is the only red. */
 :root{
-  --paper:#ECF0E8;      /* 伝票の地色 */
-  --slip:#F9FBF7;       /* 票面 */
-  --line:#BFCFC5;       /* 細い罫 */
-  --rule:#2E6251;       /* 印刷の罫・見出しの緑 */
-  --ink:#1B2420;        /* 印刷の文字 */
-  --ink-2:#55635C;      /* 補助の文字 */
+  --paper:#E4EEDB;      /* 若葉の地色 */
+  --paper-top:#EEF6E2;  /* 木漏れ日の下 */
+  --slip:#FAFCF6;       /* 票面 */
+  --line:#BDD2BD;       /* 細い罫 */
+  --rule:#2E6B3F;       /* 森の緑（罫・見出し） */
+  --ink:#17241A;        /* 印刷の文字 */
+  --ink-2:#4D6152;      /* 補助の文字 */
   --pen:#22397C;        /* ボールペンの青黒 */
   --shu:#C4302A;        /* 朱肉 */
   --shu-wash:rgba(196,48,42,.10);
   --print:#FFFFFF;      /* 写真の白フチ */
-  --seal-a:#E1E8E0; --seal-b:#D2DCD4;
-  --tag-bg:rgba(18,24,21,.74); --tag-fg:#F4F7F3;
-  --shadow:0 1px 0 rgba(27,36,32,.05), 0 8px 20px -12px rgba(27,36,32,.38);
+  --seal-a:#DCEACF; --seal-b:#CCDFBD;
+  --leaf-wash:#D3E6C2;
+  --tag-bg:rgba(16,28,19,.74); --tag-fg:#F3F8EF;
+  --shadow:0 1px 0 rgba(23,36,26,.05), 0 8px 20px -12px rgba(23,46,30,.40);
   --stamp-blend:multiply;
+  /* 天井の葉と光 */
+  --leaf-1:#1E4A2B; --leaf-2:#2B6A3A; --leaf-3:#4A8B3E; --leaf-4:#7AB154; --leaf-5:#A8CE6C;
+  --leaf-vein:rgba(250,255,235,.30); --branch:#3A3B25;
+  --sky-0:#E3F0D2; --sky-1:#EAF3DD; --sun:255,246,206; --canopy-night:0;
+  --canopy-shade:rgba(38,92,50,.42);
+  --accent-1:#7AB154; --accent-2:#A8CE6C; --accent-3:#4A8B3E;
   --f-print:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",sans-serif;
   --f-hand:"Klee One","Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif;
   --f-num:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --paper:#111714; --slip:#18201C; --line:#2F3E37; --rule:#7DB9A4; --ink:#E3EBE6; --ink-2:#A0B1A9;
+    --paper:#0D1811; --paper-top:#102016; --slip:#15221A; --line:#2A3D30; --rule:#86C79A; --ink:#E2EDE4; --ink-2:#9DB3A3;
     --pen:#B1C4FF; --shu:#FF6E5B; --shu-wash:rgba(255,110,91,.14); --print:#DCE3DE;
-    --seal-a:#25302B; --seal-b:#1D2622; --shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 24px -14px rgba(0,0,0,.85);
+    --seal-a:#1F2E24; --seal-b:#18251D; --leaf-wash:#1B2E21; --shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 24px -14px rgba(0,0,0,.85);
     --stamp-blend:normal; color-scheme:dark;
+    --leaf-1:#0B1D12; --leaf-2:#11301E; --leaf-3:#18412A; --leaf-4:#215436; --leaf-5:#2C6843;
+    --leaf-vein:rgba(170,220,185,.10); --branch:#08110B;
+    --sky-0:#0B1710; --sky-1:#0D1811; --sun:210,240,130; --canopy-night:1;
+    --canopy-shade:rgba(3,10,6,.55);
   }
 }
 :root[data-theme="dark"]{
-  --paper:#111714; --slip:#18201C; --line:#2F3E37; --rule:#7DB9A4; --ink:#E3EBE6; --ink-2:#A0B1A9;
+  --paper:#0D1811; --paper-top:#102016; --slip:#15221A; --line:#2A3D30; --rule:#86C79A; --ink:#E2EDE4; --ink-2:#9DB3A3;
   --pen:#B1C4FF; --shu:#FF6E5B; --shu-wash:rgba(255,110,91,.14); --print:#DCE3DE;
-  --seal-a:#25302B; --seal-b:#1D2622; --shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 24px -14px rgba(0,0,0,.85);
+  --seal-a:#1F2E24; --seal-b:#18251D; --leaf-wash:#1B2E21; --shadow:0 1px 0 rgba(0,0,0,.35), 0 10px 24px -14px rgba(0,0,0,.85);
   --stamp-blend:normal; color-scheme:dark;
+  --leaf-1:#0B1D12; --leaf-2:#11301E; --leaf-3:#18412A; --leaf-4:#215436; --leaf-5:#2C6843;
+  --leaf-vein:rgba(170,220,185,.10); --branch:#08110B;
+  --sky-0:#0B1710; --sky-1:#0D1811; --sun:210,240,130; --canopy-night:1;
+  --canopy-shade:rgba(3,10,6,.55);
+}
+
+/* ── 季節：data-season は先頭のスクリプトが端末の日付から決める。夏は上の基本の色 ── */
+:root[data-season="spring"]{
+  --paper:#EDF3E2; --paper-top:#F8F3EF; --line:#C3D6BF; --rule:#3A7340; --leaf-wash:#DCEBCA; --seal-a:#E2EFD2; --seal-b:#D2E5BF;
+  --leaf-1:#3B7531; --leaf-2:#56953A; --leaf-3:#80B84E; --leaf-4:#AAD268; --leaf-5:#CFE68E;
+  --accent-1:#F4B5C5; --accent-2:#E88AA6; --accent-3:#FCE6EC;
+  --leaf-vein:rgba(255,255,240,.32); --branch:#5B4733;
+  --sky-0:#EEF5E3; --sky-1:#F4F5EC; --sun:255,248,228; --canopy-shade:rgba(80,140,60,.22);
+}
+:root[data-season="autumn"]{
+  --paper:#F1EADA; --paper-top:#F8F0DF; --slip:#FCFAF4; --line:#D4CBB0; --rule:#74502B; --leaf-wash:#EADFC4; --seal-a:#EEE4CC; --seal-b:#E2D5B6;
+  --leaf-1:#3D5A2B; --leaf-2:#5A7434; --leaf-3:#7D8E3C; --leaf-4:#A6A447; --leaf-5:#C8BD5A;
+  --accent-1:#C9432A; --accent-2:#E1782D; --accent-3:#E8B437;
+  --leaf-vein:rgba(255,248,230,.30); --branch:#4A3424;
+  --sky-0:#F2E5CB; --sky-1:#F5EEDF; --sun:255,236,196; --canopy-shade:rgba(120,72,30,.26);
+}
+:root[data-season="winter"]{
+  --paper:#E8EDEA; --paper-top:#F2F5F3; --line:#C2CFC9; --rule:#3B5E53; --leaf-wash:#DAE5DF; --seal-a:#E2E9E5; --seal-b:#D3DED8;
+  --leaf-1:#20402E; --leaf-2:#2C5038; --leaf-3:#3B6346; --leaf-4:#527858; --leaf-5:#6B8E6E;
+  --accent-1:#B8323A; --accent-2:#D24A55; --accent-3:#E8BF4A;
+  --leaf-vein:rgba(240,248,245,.22); --branch:#56514A;
+  --sky-0:#D4DEE1; --sky-1:#EDF1F0; --sun:236,244,255; --canopy-shade:rgba(60,80,76,.16);
+}
+@media (prefers-color-scheme: dark){
+  :root[data-season="spring"]:not([data-theme="light"]){
+    --paper:#0E1710; --paper-top:#121B13; --line:#2B3D2E; --rule:#93CC9A; --leaf-wash:#1C2E1F; --seal-a:#20301F; --seal-b:#19271A;
+    --leaf-1:#0D2112; --leaf-2:#133019; --leaf-3:#1B4222; --leaf-4:#25542C; --leaf-5:#306636;
+    --accent-1:#9A6271; --accent-2:#B07385; --accent-3:#C9A6B0;
+    --leaf-vein:rgba(180,225,180,.10); --branch:#0C120B;
+    --sky-0:#0B160D; --sky-1:#0E1710; --sun:225,232,255; --canopy-shade:rgba(3,10,5,.5);
+  }
+  :root[data-season="autumn"]:not([data-theme="light"]){
+    --paper:#14110C; --paper-top:#19150F; --slip:#1D1913; --line:#3A3326; --rule:#D0AE6E; --leaf-wash:#2A2317; --seal-a:#29231A; --seal-b:#211C14;
+    --leaf-1:#1B2414; --leaf-2:#263118; --leaf-3:#343D1C; --leaf-4:#474920; --leaf-5:#5A5626;
+    --accent-1:#843222; --accent-2:#94501F; --accent-3:#927026;
+    --leaf-vein:rgba(240,215,170,.10); --branch:#0D0A06;
+    --sky-0:#110E09; --sky-1:#14110C; --sun:255,214,150; --canopy-shade:rgba(0,0,0,.5);
+  }
+  :root[data-season="winter"]:not([data-theme="light"]){
+    --paper:#0D1312; --paper-top:#111817; --line:#283633; --rule:#9BC4B6; --leaf-wash:#1A2723; --seal-a:#1E2A27; --seal-b:#18221F;
+    --leaf-1:#0B1A13; --leaf-2:#10251A; --leaf-3:#163022; --leaf-4:#1F3E2C; --leaf-5:#2A4E38;
+    --accent-1:#8A2A33; --accent-2:#9A3A3E; --accent-3:#8C7432;
+    --leaf-vein:rgba(200,225,220,.08); --branch:#0A0F0E;
+    --sky-0:#0B1211; --sky-1:#0D1312; --sun:220,232,255; --canopy-shade:rgba(0,6,5,.5);
+  }
+}
+:root[data-season="spring"][data-theme="dark"]{
+  --paper:#0E1710; --paper-top:#121B13; --line:#2B3D2E; --rule:#93CC9A; --leaf-wash:#1C2E1F; --seal-a:#20301F; --seal-b:#19271A;
+  --leaf-1:#0D2112; --leaf-2:#133019; --leaf-3:#1B4222; --leaf-4:#25542C; --leaf-5:#306636;
+  --accent-1:#9A6271; --accent-2:#B07385; --accent-3:#C9A6B0;
+  --leaf-vein:rgba(180,225,180,.10); --branch:#0C120B;
+  --sky-0:#0B160D; --sky-1:#0E1710; --sun:225,232,255; --canopy-shade:rgba(3,10,5,.5);
+}
+:root[data-season="autumn"][data-theme="dark"]{
+  --paper:#14110C; --paper-top:#19150F; --slip:#1D1913; --line:#3A3326; --rule:#D0AE6E; --leaf-wash:#2A2317; --seal-a:#29231A; --seal-b:#211C14;
+  --leaf-1:#1B2414; --leaf-2:#263118; --leaf-3:#343D1C; --leaf-4:#474920; --leaf-5:#5A5626;
+  --accent-1:#843222; --accent-2:#94501F; --accent-3:#927026;
+  --leaf-vein:rgba(240,215,170,.10); --branch:#0D0A06;
+  --sky-0:#110E09; --sky-1:#14110C; --sun:255,214,150; --canopy-shade:rgba(0,0,0,.5);
+}
+:root[data-season="winter"][data-theme="dark"]{
+  --paper:#0D1312; --paper-top:#111817; --line:#283633; --rule:#9BC4B6; --leaf-wash:#1A2723; --seal-a:#1E2A27; --seal-b:#18221F;
+  --leaf-1:#0B1A13; --leaf-2:#10251A; --leaf-3:#163022; --leaf-4:#1F3E2C; --leaf-5:#2A4E38;
+  --accent-1:#8A2A33; --accent-2:#9A3A3E; --accent-3:#8C7432;
+  --leaf-vein:rgba(200,225,220,.08); --branch:#0A0F0E;
+  --sky-0:#0B1211; --sky-1:#0D1312; --sun:220,232,255; --canopy-shade:rgba(0,6,5,.5);
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-body{ background:var(--paper); color:var(--ink); font-family:var(--f-print); font-size:15px; line-height:1.65; -webkit-text-size-adjust:100%; }
-.page{ max-width:680px; margin-inline:auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:20px 56px; }
+body{ background:var(--paper); background-image:linear-gradient(180deg, var(--paper-top), var(--paper) 560px); background-repeat:no-repeat; color:var(--ink); font-family:var(--f-print); font-size:15px; line-height:1.65; -webkit-text-size-adjust:100%; }
+.canopy{ position:relative; height:clamp(150px, 36vw, 240px); margin-bottom:-40px; pointer-events:none; -webkit-mask-image:linear-gradient(to bottom, #000 50%, transparent 100%); mask-image:linear-gradient(to bottom, #000 50%, transparent 100%); }
+.canopy canvas{ display:block; width:100%; height:100%; }
+.page{ position:relative; max-width:680px; margin-inline:auto; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:20px 56px; }
 h1,h2,h3,p,dl,dd,ol,ul{ margin:0; }
 button{ font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; }
 :focus-visible{ outline:3px solid var(--rule); outline-offset:2px; border-radius:3px; }
@@ -65,7 +150,7 @@ button{ font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color
 .vh{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
 /* ── masthead ── */
-.eyebrow{ display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; font-size:11.5px; letter-spacing:.08em; color:var(--ink-2); }
+.eyebrow{ display:flex; justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap; font-size:11.5px; letter-spacing:.08em; color:var(--ink-2); text-shadow:0 0 8px var(--paper-top), 0 0 2px var(--paper-top); }
 .conn{ display:inline-flex; align-items:center; gap:6px; }
 .conn::before{ content:""; width:7px; height:7px; border-radius:50%; background:var(--line); }
 .conn[data-mode="idb"]::before{ background:var(--rule); }
@@ -121,7 +206,7 @@ button{ font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color
 /* ── areas & slips ── */
 .areas{ display:grid; gap:30px; margin-top:30px; }
 .area-head{ display:flex; align-items:center; gap:10px; padding-bottom:6px; border-bottom:1.5px solid var(--rule); }
-.area-key{ flex:none; display:grid; place-items:center; width:26px; height:26px; border:1.5px solid var(--rule); border-radius:3px; color:var(--rule); font-family:var(--f-num); font-weight:600; font-size:14px; line-height:1; }
+.area-key{ flex:none; display:grid; place-items:center; width:28px; height:28px; border:1.5px solid var(--rule); border-radius:3px 70% 3px 70%; background:var(--leaf-wash); color:var(--rule); font-family:var(--f-num); font-weight:600; font-size:14px; line-height:1; }
 .area.is-done .area-key{ background:var(--rule); color:var(--slip); }
 .area-head h2{ flex:1; min-width:0; font-size:16px; font-weight:700; line-height:1.4; text-wrap:balance; }
 .area-count{ flex:none; font-size:13px; color:var(--ink-2); }
@@ -218,6 +303,9 @@ button{ font:inherit; color:inherit; cursor:pointer; -webkit-tap-highlight-color
 .foot ul{ display:grid; gap:6px; padding-left:1.2em; margin-top:6px; }
 .foot a{ color:var(--rule); text-underline-offset:3px; overflow-wrap:anywhere; }
 .reset{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; margin-top:16px; }
+.season-row{ display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; margin-top:18px; }
+.season-row .seg button{ padding:6px 12px; }
+.season-row .help{ flex-basis:100%; }
 .fine{ font-size:11.5px; color:var(--ink-2); margin-top:18px; }
 
 /* ── sheets (dialog) ── */
@@ -248,8 +336,20 @@ dialog.sheet::backdrop{ background:rgba(10,14,12,.58); }
 
 @media (prefers-reduced-motion: reduce){ *,*::before,*::after{ animation:none !important; transition:none !important; } }
 </style>
+
+<script>
+(function () {
+  var pref = 'auto';
+  try { pref = localStorage.getItem('wm-season') || 'auto'; } catch (e) { /* storage off */ }
+  var m = new Date().getMonth() + 1;
+  var auto = m >= 3 && m <= 5 ? 'spring' : m >= 6 && m <= 8 ? 'summer' : m >= 9 && m <= 11 ? 'autumn' : 'winter';
+  document.documentElement.setAttribute('data-season', /^(spring|summer|autumn|winter)$/.test(pref) ? pref : auto);
+})();
+</script>
 </head>
 <body>
+<div class="canopy" aria-hidden="true"><canvas id="wm-canopy"></canvas></div>
+
 <div class="page">
   <header>
     <div class="eyebrow"><span>非公式・ご自由にどうぞ</span><span class="conn" id="wm-conn" data-mode="loading">読み込み中…</span></div>
@@ -355,6 +455,17 @@ dialog.sheet::backdrop{ background:rgba(10,14,12,.58); }
       </ul>
       <p style="margin-top:12px"><a href="#mihon">全部そろったときの見本を見る</a></p>
     </details>
+    <div class="season-row">
+      <span class="ctl-label">ページの季節</span>
+      <div class="seg" role="radiogroup" aria-label="ページの季節">
+        <button type="button" role="radio" aria-checked="true" data-act="season" data-v="auto">自動</button>
+        <button type="button" role="radio" aria-checked="false" data-act="season" data-v="spring">春</button>
+        <button type="button" role="radio" aria-checked="false" data-act="season" data-v="summer">夏</button>
+        <button type="button" role="radio" aria-checked="false" data-act="season" data-v="autumn">秋</button>
+        <button type="button" role="radio" aria-checked="false" data-act="season" data-v="winter">冬</button>
+      </div>
+      <p class="help" id="wm-season-help"></p>
+    </div>
     <div class="reset" id="wm-reset-row" hidden>
       <button type="button" class="btn danger" data-act="reset" id="wm-reset">記録と写真をすべて消す</button>
       <span class="help">人数と名前は残ります。</span>
@@ -1385,6 +1496,41 @@ dialog.sheet::backdrop{ background:rgba(10,14,12,.58); }
     onHash();
   }
 
+  /* ── 季節 ── */
+  const SEASON_JA = { spring: '春', summer: '夏', autumn: '秋', winter: '冬' };
+  function autoSeason() {
+    const m = new Date().getMonth() + 1;
+    return m >= 3 && m <= 5 ? 'spring' : m >= 6 && m <= 8 ? 'summer' : m >= 9 && m <= 11 ? 'autumn' : 'winter';
+  }
+  let seasonPick = 'auto';
+  try { const v = localStorage.getItem('wm-season'); if (v && SEASON_JA[v]) seasonPick = v; } catch (e) { /* storage off */ }
+  function syncThemeColor() {
+    const m = document.querySelector('meta[name="theme-color"]');
+    const c = getComputedStyle(document.documentElement).getPropertyValue('--paper-top').trim();
+    if (m && c) m.setAttribute('content', c);
+  }
+  function applySeason() {
+    const s = seasonPick === 'auto' ? autoSeason() : seasonPick;
+    const root = document.documentElement;
+    if (root.getAttribute('data-season') !== s) root.setAttribute('data-season', s);
+    document.querySelectorAll('[data-act="season"]').forEach((b) => b.setAttribute('aria-checked', String(b.dataset.v === seasonPick)));
+    const help = $('#wm-season-help');
+    if (help) {
+      help.textContent = seasonPick === 'auto'
+        ? `いまは${SEASON_JA[s]}の色です。ひらいた日の月で変わります（春3〜5月、夏6〜8月、秋9〜11月、冬12〜2月）。`
+        : `${SEASON_JA[s]}の色で固定しています。この設定はこの端末にだけ残ります。`;
+    }
+    syncThemeColor();
+  }
+  function setSeason(v) {
+    seasonPick = SEASON_JA[v] ? v : 'auto';
+    try {
+      if (seasonPick === 'auto') localStorage.removeItem('wm-season');
+      else localStorage.setItem('wm-season', seasonPick);
+    } catch (e) { /* この訪問のあいだだけ */ }
+    applySeason();
+  }
+
   /* ── events ── */
   document.addEventListener('click', (e) => {
     const t = e.target.closest('[data-act]');
@@ -1409,11 +1555,303 @@ dialog.sheet::backdrop{ background:rgba(10,14,12,.58); }
       case 'close-pv': closeDialog(pv); break;
       case 'reset': resetClick(t); break;
       case 'demo-exit': exitDemo(); break;
+      case 'season': setSeason(t.dataset.v); break;
       case 'toast-action': { const a = toastAction; $('#wm-toast').hidden = true; toastAction = null; if (a) a.run(); break; }
       default: break;
     }
   });
   $('#wm-memo').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); saveMemo(); } });
+
+  /* ── 木漏れ日の天井 ── */
+  function mulberry32(seed) {
+    let a = seed;
+    return () => {
+      a = (a + 0x6D2B79F5) | 0;
+      let t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+  function canopy() {
+    const cv = $('#wm-canopy');
+    const g = cv && cv.getContext ? cv.getContext('2d') : null;
+    if (!g) return;
+    const root = document.documentElement;
+    let W = 0, H = 0, dpr = 1, k = 1, pal = null, leaves = [], spots = [], beams = [], twigs = [], falls = [];
+    let raf = 0, visible = true, last = 0;
+    const t0 = performance.now();
+    const css = (n) => getComputedStyle(root).getPropertyValue(n).trim();
+    // 季節ごとの違い：葉を残す割合、舞い落ちるもの、その数（幅 per px ごとに1つ）
+    const SEASON = {
+      spring: { keep: 1, fall: 'petal', per: 20 },
+      summer: { keep: 1, fall: '', per: 0 },
+      autumn: { keep: 0.92, fall: 'leaf', per: 60 },
+      winter: { keep: 0.3, fall: 'snow', per: 7 },
+    };
+    function readPal() {
+      const se = root.getAttribute('data-season');
+      pal = {
+        leaf: ['--leaf-1', '--leaf-2', '--leaf-3', '--leaf-4', '--leaf-5'].map(css),
+        accent: ['--accent-1', '--accent-2', '--accent-3'].map(css),
+        vein: css('--leaf-vein'), branch: css('--branch'), sky0: css('--sky-0'), sky1: css('--sky-1'), shade: css('--canopy-shade') || 'rgba(0,0,0,0)',
+        sun: css('--sun') || '255,246,206', night: css('--canopy-night') === '1',
+        season: SEASON[se] ? se : 'summer',
+      };
+      pal.cfg = SEASON[pal.season];
+    }
+    const qpt = (b, u) => { const v = 1 - u; return [v * v * b.x0 + 2 * v * u * b.cx + u * u * b.x1, v * v * b.y0 + 2 * v * u * b.cy + u * u * b.y1]; };
+    const qtan = (b, u) => [2 * (1 - u) * (b.cx - b.x0) + 2 * u * (b.x1 - b.cx), 2 * (1 - u) * (b.cy - b.y0) + 2 * u * (b.y1 - b.cy)];
+    function layout() {
+      const r = cv.getBoundingClientRect();
+      W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+      dpr = Math.min(2, window.devicePixelRatio || 1);
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      const se = pal.season, cfg = pal.cfg;
+      // 位置は季節によらず同じ乱数列。季節で変わるのは葉の種類と色と量
+      const rand = mulberry32(1018), pick = mulberry32(2611), fr = mulberry32(331);
+      k = W < 520 ? 0.85 : 1.1;
+      const n = Math.round(Math.min(380, Math.max(150, (W * H) / 230)));
+      leaves = [];
+      for (let i = 0; i < n; i++) {
+        const depth = rand();
+        const L = { x: rand() * (W + 60) - 30, y: H * Math.pow(rand(), 1.8) * 0.78 - 8, s: (11 + depth * 24) * k, a: (rand() * 2 - 1) * 2.3, w: 0.36 + rand() * 0.16, depth, ph: rand() * 6.283, sp: 0.45 + rand() * 0.6, kind: 'leaf' };
+        const q = pick();
+        if (pick() >= cfg.keep) continue;
+        L.col = pal.leaf[depth < 0.25 ? 0 : depth < 0.5 ? 1 : depth < 0.75 ? 2 : depth < 0.93 ? 3 : 4];
+        if (se === 'spring' && q < 0.4) { L.kind = 'bloom'; L.col = pal.accent[q < 0.16 ? 1 : q < 0.32 ? 0 : 2]; }
+        else if (se === 'autumn' && q < 0.84) { L.kind = q < 0.62 ? 'maple' : 'ginkgo'; L.col = pal.accent[q < 0.32 ? 0 : q < 0.62 ? 1 : 2]; }
+        else if (se === 'winter' && q < 0.14) { L.kind = 'camellia'; L.col = pal.accent[q < 0.07 ? 0 : 1]; }
+        leaves.push(L);
+      }
+      leaves.sort((p, q) => p.depth - q.depth);
+      spots = Array.from({ length: Math.max(8, Math.round(W / 26)) }, () => ({ x: rand() * W, y: H * (0.06 + rand() * 0.55), r: (9 + rand() * 30) * k, ph: rand() * 6.283, sp: 0.25 + rand() * 0.45 }));
+      beams = [0.16, 0.47, 0.8].map((f, i) => ({ x: W * f, w: W * (0.06 + 0.03 * i), tilt: W * 0.12 }));
+      // 枝。冬は葉が落ちて見えるので、太くして小枝も足す
+      const bare = se === 'winter';
+      twigs = [];
+      const sprout = (b, lvl) => {
+        const m = lvl ? 2 : 3;
+        for (let j = 0; j < m; j++) {
+          const u = 0.22 + (j + rand() * 0.7) * (0.7 / m);
+          const [px, py] = qpt(b, u), [tx, ty] = qtan(b, u);
+          const ang = Math.atan2(ty, tx) + (rand() < 0.5 ? -1 : 1) * (0.45 + rand() * 0.55);
+          const len = Math.hypot(b.x1 - b.x0, b.y1 - b.y0) * (0.25 + rand() * 0.2);
+          const bend = (rand() - 0.5) * 0.7;
+          const c = { x0: px, y0: py, cx: px + Math.cos(ang + bend) * len * 0.55, cy: py + Math.sin(ang + bend) * len * 0.55, x1: px + Math.cos(ang) * len, y1: py + Math.sin(ang) * len, lw: b.lw * 0.55 };
+          twigs.push(c);
+          if (!lvl) sprout(c, 1);
+        }
+      };
+      for (let i = 0; i < (bare ? 6 : 4); i++) {
+        const fromLeft = i % 2 === 0;
+        const y0 = H * (0.05 + rand() * 0.25);
+        const b = { x0: fromLeft ? -10 : W + 10, y0, cx: W * (fromLeft ? 0.25 + rand() * 0.2 : 0.75 - rand() * 0.2), cy: y0 + H * (0.1 + rand() * 0.2), x1: W * (fromLeft ? 0.45 + rand() * 0.25 : 0.55 - rand() * 0.25), y1: H * rand() * 0.3, lw: (2 + rand() * 3) * (bare ? 1.25 : 1) };
+        twigs.push(b);
+        if (bare) sprout(b, 0);
+      }
+      twigs.forEach((b) => { b.flat = 1 - Math.atan2(Math.abs(b.y1 - b.y0), Math.abs(b.x1 - b.x0)) / 1.5708; });
+      const fk = cfg.fall;
+      falls = Array.from({ length: cfg.per ? Math.round(W / cfg.per) : 0 }, () => {
+        const snow = fk === 'snow', petal = fk === 'petal';
+        return {
+          x: fr() * W, y: fr() * (H + 40), ph: fr() * 6.283, sw: 0.3 + fr() * 0.6, spin: (fr() - 0.5) * 2.4, c: Math.floor(fr() * 3),
+          v: snow ? 7 + fr() * 13 : petal ? 10 + fr() * 14 : 12 + fr() * 12,
+          amp: snow ? 4 + fr() * 9 : 10 + fr() * 22,
+          s: (snow ? 0.8 + fr() * 2 : petal ? 4.5 + fr() * 4 : 9 + fr() * 6) * k,
+        };
+      });
+    }
+    function leafPath(s, w) {
+      g.beginPath();
+      g.moveTo(0, 0);
+      g.bezierCurveTo(s * w, s * 0.12, s * w * 0.95, s * 0.62, 0, s);
+      g.bezierCurveTo(-s * w * 0.95, s * 0.62, -s * w, s * 0.12, 0, 0);
+    }
+    function petalPath(r) {
+      g.moveTo(0, 0);
+      g.bezierCurveTo(r * 0.62, -r * 0.22, r * 0.52, -r * 0.92, r * 0.16, -r);
+      g.lineTo(0, -r * 0.8);
+      g.lineTo(-r * 0.16, -r);
+      g.bezierCurveTo(-r * 0.52, -r * 0.92, -r * 0.62, -r * 0.22, 0, 0);
+    }
+    // もみじ：軸から見た向き（真下が0）と長さの、7つの細い裂片。軸は葉柄のつけ根
+    const MAPLE = [[-2.15, 0.45], [-1.45, 0.74], [-0.75, 0.93], [0, 1], [0.75, 0.93], [1.45, 0.74], [2.15, 0.45]];
+    function maplePath(s) {
+      const R = s * 0.5, cy = s * 0.4;
+      const P = (o, f) => [Math.cos(1.5708 + o) * R * f, cy + Math.sin(1.5708 + o) * R * f];
+      g.beginPath();
+      g.moveTo(...P(3.1416, 0.1));
+      g.lineTo(...P(-2.65, 0.2));
+      MAPLE.forEach(([o, f], i) => {
+        const next = MAPLE[i + 1];
+        g.quadraticCurveTo(...P(o - 0.2, f * 0.72), ...P(o, f));
+        g.quadraticCurveTo(...P(o + 0.2, f * 0.72), ...(next ? P((o + next[0]) / 2, 0.28) : P(2.65, 0.2)));
+      });
+      g.closePath();
+      return [R, cy];
+    }
+    function shape(kind, s, w, col, alpha, detail) {
+      g.globalAlpha = alpha;
+      g.fillStyle = col;
+      g.strokeStyle = pal.vein;
+      g.lineWidth = Math.max(0.6, s * 0.035);
+      if (kind === 'bloom') {
+        const r = s * 0.42;
+        g.beginPath();
+        for (let i = 0; i < 5; i++) { petalPath(r); g.rotate(1.2566); }
+        g.fill();
+        g.fillStyle = pal.accent[1];
+        g.beginPath(); g.arc(0, 0, r * 0.22, 0, 6.283); g.fill();
+      } else if (kind === 'camellia') {
+        const r = s * 0.34;
+        g.beginPath();
+        for (let i = 0; i < 5; i++) {
+          const a = i * 1.2566 - 1.5708, cx = Math.cos(a) * r * 0.5, cy = Math.sin(a) * r * 0.5;
+          g.moveTo(cx + r * 0.5, cy); g.arc(cx, cy, r * 0.5, 0, 6.283);
+        }
+        g.fill();
+        g.fillStyle = pal.accent[2];
+        g.beginPath(); g.arc(0, 0, r * 0.3, 0, 6.283); g.fill();
+      } else if (kind === 'maple') {
+        const [R, cy] = maplePath(s);
+        g.fill();
+        if (detail) {
+          g.globalAlpha = 1;
+          g.beginPath();
+          MAPLE.forEach(([o, f]) => { const a = 1.5708 + o; g.moveTo(0, cy); g.lineTo(Math.cos(a) * R * f * 0.78, cy + Math.sin(a) * R * f * 0.78); });
+          g.stroke();
+          g.strokeStyle = col; g.beginPath(); g.moveTo(0, s * 0.1); g.lineTo(0, cy); g.stroke();
+        }
+      } else if (kind === 'ginkgo') {
+        const R = s * 0.66, py = s * 0.3;
+        g.beginPath();
+        g.moveTo(0, py);
+        g.arc(0, py, R, 0.62, 1.5);
+        g.lineTo(0, py + R * 0.72);
+        g.arc(0, py, R, 1.64, 2.52);
+        g.closePath(); g.fill();
+        if (detail) { g.strokeStyle = col; g.lineWidth = Math.max(0.8, s * 0.05); g.beginPath(); g.moveTo(0, 0); g.lineTo(0, py); g.stroke(); }
+      } else {
+        leafPath(s, w); g.fill();
+        g.globalAlpha = 1;
+        g.beginPath(); g.moveTo(0, s * 0.1); g.lineTo(0, s * 0.88); g.stroke();
+      }
+    }
+    function draw(t) {
+      const se = pal.season, cfg = pal.cfg;
+      g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      g.globalCompositeOperation = 'source-over';
+      g.globalAlpha = 1;
+      const sky = g.createLinearGradient(0, 0, 0, H);
+      sky.addColorStop(0, pal.sky0); sky.addColorStop(1, pal.sky1);
+      g.fillStyle = sky; g.fillRect(0, 0, W, H);
+      const shade = g.createLinearGradient(0, 0, 0, H * 0.75);
+      shade.addColorStop(0, pal.shade); shade.addColorStop(1, 'rgba(0,0,0,0)');
+      g.fillStyle = shade; g.fillRect(0, 0, W, H);
+      if (pal.night && (se === 'spring' || se === 'autumn')) {
+        // 春は朧月、秋は名月。葉のすきまから見える
+        const mx = W * 0.78, my = H * 0.3, mr = Math.min(20, H * 0.1) * k, hz = se === 'spring' ? 5.5 : 3.2;
+        const halo = g.createRadialGradient(mx, my, mr * 0.5, mx, my, mr * hz);
+        halo.addColorStop(0, `rgba(${pal.sun},${se === 'spring' ? 0.32 : 0.24})`); halo.addColorStop(1, `rgba(${pal.sun},0)`);
+        g.fillStyle = halo; g.beginPath(); g.arc(mx, my, mr * hz, 0, 6.283); g.fill();
+        g.fillStyle = `rgba(${pal.sun},${se === 'spring' ? 0.7 : 0.92})`; g.beginPath(); g.arc(mx, my, mr, 0, 6.283); g.fill();
+      }
+      g.strokeStyle = pal.branch; g.lineCap = 'round';
+      twigs.forEach((b) => { g.lineWidth = b.lw; g.beginPath(); g.moveTo(b.x0, b.y0); g.quadraticCurveTo(b.cx, b.cy, b.x1, b.y1); g.stroke(); });
+      if (se === 'winter') {
+        // 枝に積もった雪。水平に近い枝ほど多く積もる
+        g.strokeStyle = pal.night ? `rgba(${pal.sun},0.3)` : 'rgba(255,255,255,0.95)';
+        twigs.forEach((b) => {
+          if (b.flat < 0.3) return;
+          const o = b.lw * 0.45;
+          g.globalAlpha = Math.min(1, b.flat + 0.15);
+          g.lineWidth = Math.max(1, b.lw * (pal.night ? 0.45 : 0.6));
+          g.beginPath(); g.moveTo(b.x0, b.y0 - o); g.quadraticCurveTo(b.cx, b.cy - o, b.x1, b.y1 - o); g.stroke();
+        });
+        g.globalAlpha = 1;
+      }
+      if (!pal.night) {
+        g.globalCompositeOperation = 'screen';
+        beams.forEach((b, i) => {
+          const a = 0.10 + 0.04 * Math.sin(t * 0.35 + i * 2);
+          const grd = g.createLinearGradient(0, 0, 0, H);
+          grd.addColorStop(0, `rgba(${pal.sun},${a})`); grd.addColorStop(1, `rgba(${pal.sun},0)`);
+          g.fillStyle = grd;
+          g.beginPath(); g.moveTo(b.x, 0); g.lineTo(b.x + b.w, 0); g.lineTo(b.x + b.w + b.tilt, H); g.lineTo(b.x + b.tilt, H); g.closePath(); g.fill();
+        });
+        g.globalCompositeOperation = 'source-over';
+      }
+      leaves.forEach((L) => {
+        const sway = Math.sin(t * L.sp + L.ph) * (0.05 + 0.06 * L.depth);
+        g.save();
+        g.translate(L.x + Math.sin(t * L.sp * 0.7 + L.ph) * 1.2 * L.depth, L.y);
+        g.rotate(L.a + sway);
+        shape(L.kind, L.s, L.w, L.col, 0.72 + 0.28 * L.depth, L.depth > 0.4);
+        g.restore();
+      });
+      // 昼は木漏れ日。夜の蛍は夏だけ
+      if (!pal.night || se === 'summer') {
+        const dim = se === 'winter' ? 0.55 : 1;
+        g.globalCompositeOperation = pal.night ? 'lighter' : 'screen';
+        spots.forEach((p, i) => {
+          if (pal.night && i % 3) return;
+          const pulse = 0.5 + 0.5 * Math.sin(t * p.sp + p.ph);
+          const r = pal.night ? (3 + 2 * pulse) * 4 : p.r * (0.85 + 0.15 * pulse);
+          const x = p.x + (pal.night ? Math.sin(t * 0.22 + p.ph) * 14 : 0);
+          const y = p.y + (pal.night ? Math.cos(t * 0.17 + p.ph) * 8 : 0);
+          const a = (pal.night ? 0.35 + 0.5 * pulse : 0.32 + 0.22 * pulse) * dim;
+          const grd = g.createRadialGradient(x, y, 0, x, y, r);
+          grd.addColorStop(0, `rgba(${pal.sun},${a})`); grd.addColorStop(pal.night ? 0.25 : 0.55, `rgba(${pal.sun},${a * 0.45})`); grd.addColorStop(1, `rgba(${pal.sun},0)`);
+          g.fillStyle = grd; g.beginPath(); g.arc(x, y, r, 0, 6.283); g.fill();
+        });
+        g.globalCompositeOperation = 'source-over';
+      }
+      // 舞い落ちるもの：春は花びら、秋は落ち葉、冬は雪
+      falls.forEach((p) => {
+        const y = ((p.y + t * p.v) % (H + 40)) - 20;
+        const x = p.x + Math.sin(t * p.sw + p.ph) * p.amp;
+        if (cfg.fall === 'snow') {
+          g.globalAlpha = 1;
+          g.fillStyle = pal.night ? `rgba(${pal.sun},${0.45 + 0.4 * Math.min(1, p.s / (2.8 * k))})` : 'rgba(255,255,255,0.95)';
+          g.beginPath(); g.arc(x, y, p.s, 0, 6.283); g.fill();
+          if (!pal.night) { g.strokeStyle = 'rgba(70,92,104,0.3)'; g.lineWidth = 0.6; g.stroke(); }
+          return;
+        }
+        g.save();
+        g.translate(x, y);
+        g.rotate(p.ph + t * p.spin);
+        g.scale(1, Math.cos(t * p.sw * 1.6 + p.ph));
+        if (cfg.fall === 'petal') {
+          g.globalAlpha = 0.92; g.fillStyle = pal.accent[p.c === 2 ? 0 : p.c];
+          g.beginPath(); petalPath(p.s); g.fill();
+        } else {
+          shape(p.c === 2 ? 'ginkgo' : 'maple', p.s, 0.4, pal.accent[p.c], 0.95, true);
+        }
+        g.restore();
+      });
+      g.globalAlpha = 1;
+    }
+    function frame(now) {
+      raf = 0;
+      if (!visible || document.hidden) return;
+      if (now - last >= 40) { last = now; draw((now - t0) / 1000); }
+      raf = requestAnimationFrame(frame);
+    }
+    function start() {
+      if (reduceMotion()) return;
+      if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame);
+    }
+    function refresh() { readPal(); layout(); draw((performance.now() - t0) / 1000); start(); }
+    refresh();
+    let rt = 0;
+    window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(refresh, 150); });
+    document.addEventListener('visibilitychange', start);
+    try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', refresh); } catch (e) { /* older browsers */ }
+    try { new MutationObserver(refresh).observe(root, { attributes: true, attributeFilter: ['data-theme', 'data-season'] }); } catch (e) { /* optional */ }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); start(); }).observe(cv);
+    }
+  }
 
   /* ── start ── */
   async function load() {
@@ -1437,12 +1875,15 @@ dialog.sheet::backdrop{ background:rgba(10,14,12,.58); }
   buildLedger();
   buildPeople();
   applyRoute();
+  applySeason();
+  try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', syncThemeColor); } catch (e) { /* older browsers */ }
+  try { canopy(); } catch (e) { /* decoration only */ }
   window.addEventListener('hashchange', onHash);
   onHash();
   renderAll();
   use('downloads').then((d) => { DL = d; renderAll(); });
   load();
-  setInterval(renderStatus, 30000);
+  setInterval(() => { renderStatus(); if (seasonPick === 'auto') applySeason(); }, 30000);
 })();
 </script>
 </body>
